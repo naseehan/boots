@@ -1,0 +1,31 @@
+.choose-us-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    margin: 6rem;
+}
+.common-pic{
+    display: grid;
+    flex: 1;
+    min-width: 18rem;
+}
+.common-pic img{
+    border-radius: 10px;
+    width: 100%;
+}
+
+.buyNow{
+    margin: 11px 0;
+    width: 10rem;
+    border-radius: 3px;
+    color: orange;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid #000;
+    padding: 10px 20px;
+}
+.common-pic h2{
+    font-size: 3rem;
+    font-weight: 400;
+    font-family: 'Roboto Condensed';
+}

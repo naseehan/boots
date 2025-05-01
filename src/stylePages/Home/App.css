@@ -1,0 +1,100 @@
+.home-container {
+  display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(490px, 1fr));
+  /* background: linear-gradient(
+    90deg,
+    hsla(22, 81%, 44%, 1) 0%,
+    hsla(53, 65%, 80%, 1) 54%,
+    hsla(0, 0%, 96%, 1) 95%,
+    hsla(0, 0%, 96%, 1) 100%
+  ); */
+  /* background-image: url(../../assets/bg.jpg);
+  object-fit: cover;
+    background-size: cover;
+    background-position: 50%; */
+    background: linear-gradient(90deg, hsla(214, 33%, 26%, 1) 46%, hsla(360, 78%, 62%, 1) 100%);
+}
+.main-image img {
+  width: 100%;
+}
+.main-details {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.inside-div {
+  display: grid;
+  width: 30rem;
+  align-content: center;
+  gap: 12%;
+  text-align: center;
+}
+
+/* fancy btn style */
+
+/* From Uiverse.io by cssbuttons-io */
+.fancyBtn  {
+  /* --color: #560bad; */
+  --color: #fff;
+  font-family: inherit;
+  display: inline-block;
+  width: 10em;
+  height: 3.6em;
+  line-height: 2.5em;
+  margin: 20px auto;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+  padding: 10px 20px;
+}
+
+.fancyBtn:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.fancyBtn:hover {
+  color: #000;
+}
+
+.fancyBtn:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.fancyBtn:hover:before {
+  top: -47px;
+  left: -15px;
+}
+
+.fancyBtn:active:before {
+  /* background: #3a0ca3; */
+  transition: background 0s;
+}
+
+
+@media(max-width: 997px){
+  .home-container{
+    display: grid;
+    justify-content: center;
+  }
+   .main-details{
+    margin-bottom: 5rem;
+
+  }
+}

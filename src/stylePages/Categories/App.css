@@ -1,0 +1,24 @@
+.cate-heading{
+    display: flex;
+    justify-content: space-between;
+}
+.cates{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+    gap: 2%;
+}
+.each-cates{
+    box-shadow: 5px 5px 8px 0px rgba(212, 205, 212, 0.63);
+    display: grid;
+    gap: 4%;
+    padding: 5%;
+    text-align: center;
+    cursor: pointer;
+    flex: 1;
+    min-width: 16rem;
+}
+.each-cates img{
+    width: 100%;
+    height: 15rem;
+    border-radius: 4px;
+}

@@ -1,0 +1,22 @@
+.most-popular-container {
+  margin: 6rem;
+}
+.popular{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    text-align: center;
+}
+.each-products {
+  border-radius: 5px;
+  box-shadow: 5px 4px 8px -2px rgba(0, 0, 0, 0.53);
+}
+.each-products img {
+  height: 200px;
+  width: 280px;
+}
+.product-details {
+  padding: 3rem;
+  display: grid;
+  gap: 1rem;
+}

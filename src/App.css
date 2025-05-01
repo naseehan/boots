@@ -1,0 +1,19 @@
+.mt{
+    margin-top: 84px;
+}
+.mts{
+    margin-top: 42px;
+}
+.common-container{
+    margin: 6rem;
+}
+p{
+    margin: 0;
+    font-family: "Ubuntu", serif;
+}
+h1{
+    font-family: "Roboto Condensed", serif;
+}
+h3{
+    font-family: "Afacad Flux", serif;
+}
