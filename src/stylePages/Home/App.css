@@ -1,7 +1,8 @@
 .home-container {
+  position: relative;
   display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(490px, 1fr));
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(490px, 1fr));
   /* background: linear-gradient(
     90deg,
     hsla(22, 81%, 44%, 1) 0%,
@@ -13,12 +14,33 @@
   object-fit: cover;
     background-size: cover;
     background-position: 50%; */
-    background: linear-gradient(90deg, hsla(214, 33%, 26%, 1) 46%, hsla(360, 78%, 62%, 1) 100%);
+  /* background: linear-gradient(90deg, hsla(214, 33%, 26%, 1) 46%, hsla(360, 78%, 62%, 1) 100%); */
+  /* background: url(../../assets/heroBg.jpg); */
+}
+.home-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+.homeOverlay {
+  /* max-width: 1520.8px; */
+  height: 100%;
+  position: absolute;
+  background-color: #091520bf;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.main-image{
+  z-index: 99;
 }
 .main-image img {
   width: 100%;
 }
 .main-details {
+  z-index: 99;
   display: grid;
   justify-content: center;
   align-items: center;
@@ -35,7 +57,7 @@
 /* fancy btn style */
 
 /* From Uiverse.io by cssbuttons-io */
-.fancyBtn  {
+.fancyBtn {
   /* --color: #560bad; */
   --color: #fff;
   font-family: inherit;
@@ -87,14 +109,12 @@
   transition: background 0s;
 }
 
-
-@media(max-width: 997px){
-  .home-container{
+@media (max-width: 997px) {
+  .home-container {
     display: grid;
     justify-content: center;
   }
-   .main-details{
+  .main-details {
     margin-bottom: 5rem;
-
   }
 }

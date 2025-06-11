@@ -7,7 +7,7 @@ const Categories = () => {
   return (
     <div className='common-container'>
       <div className="cate-heading mt">
-        <h1>Our Categories</h1>
+        <h1 className='h1-heading'>Our Categories</h1>
         <button>Show More Categories</button>
       </div>
       <div className="cates mts">

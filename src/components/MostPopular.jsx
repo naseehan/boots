@@ -6,7 +6,7 @@ const MostPopular = () => {
   return (
     <div className='most-popular-container'>
         <div className="cate-heading">
-        <h1>Most Popular Products</h1>
+        <h1 className='h1-heading'>Most Popular Products</h1>
         </div>
         <div className="popular mts">
       {products.map((product) => (

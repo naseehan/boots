@@ -17,3 +17,7 @@ h1{
 h3{
     font-family: "Afacad Flux", serif;
 }
+.h1-heading{
+    font-size: 3rem;
+    color: #ffa500;
+}

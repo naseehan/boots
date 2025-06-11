@@ -10,6 +10,8 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
+
+
      <Link to="/">
         <img src={logo} alt="logo" className="navbar-brand " loading="lazy" title="Signature Sports"/>
       </Link>

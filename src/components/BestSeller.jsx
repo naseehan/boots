@@ -14,11 +14,12 @@ import '../stylePages/bestSeller/App.css';
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
+
 export default function BestSeller() {
   return (
     <div >
     <div className="best-seller-heading">
-        <h1>Our Best Sellers</h1>
+        <h1 className='h1-heading'>Our Best Sellers</h1>
       </div>
     <div className='swiper-container'>
       <Swiper
@@ -65,6 +66,7 @@ export default function BestSeller() {
           <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
         </SwiperSlide>
       </Swiper>
+    
     </div>
     </div>
   );

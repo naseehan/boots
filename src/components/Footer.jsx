@@ -26,9 +26,7 @@ const Footer = () => {
                   }}
                 />
                 <p>
-                  Here you can use rows and columns to organize your footer
-                  content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit.
+                 Gear up for greatness with top-quality sportswear, footwear, and equipment for every athlete. Shop the brands you love — all in one place!
                 </p>
               </div>
 
