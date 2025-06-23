@@ -63,10 +63,11 @@ const ScrambleText = () => {
 
   const phrases = [
     'shoes',
-    'badminton rackets',
+    
     'jersey',
     'sports balls',
-    'board games.'
+    'board games',
+    'badminton rackets.',
     
   ];
 

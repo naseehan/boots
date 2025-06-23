@@ -6,7 +6,7 @@ const ChooseUs = () => {
   return (
     <div className="choose-us-container">
       <div className="common-pic">
-        <img src={main1} alt="jr sports" />
+        <img src={main1} alt="jr sports" loading="lazy"/>
         <h2>SHOP NOW</h2>
         
       </div>
@@ -20,7 +20,7 @@ const ChooseUs = () => {
         </p>
 
         <button className="buyNow">Buy Now</button>
-        <img src={main2} alt="jr sports" />
+        <img src={main2} alt="jr sports" loading="lazy"/>
       </div>
     </div>
   );

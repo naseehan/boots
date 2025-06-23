@@ -35,7 +35,7 @@ const ProductDetails = () => {
       style={{ gridTemplateColumns: "repeat(auto-fit, minmax(390px, 1fr))" }}
     >
       <div>
-        <img src={product.image} alt={product.name} className="w-100" />
+        <img src={product.image} alt={product.name} className="w-100" loading="lazy"/>
       </div>
       <ProductWrapper className="d-flex flex-column justify-content-center mx-auto gap-4">
         <div

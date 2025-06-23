@@ -13,6 +13,19 @@ margin: 2rem;
     font-style: normal;
     text-transform: uppercase;
   }
+
+    @media (max-width: 1260px){
+    p{
+        font-size: 10rem;
+    }
+
+    @media (max-width: 920px){
+    p{
+        font-size: 4rem;
+        letter-spacing: -2px;
+        line-height: .8;
+    }
+    }
 `;
 
 const About = () => {
@@ -24,7 +37,6 @@ const About = () => {
         <ScrambleText />
       </p>
     </AboutSection>
-    
   );
 };
 

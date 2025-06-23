@@ -22,11 +22,12 @@ function ProductCarousel() {
         {products.shoes.map((product) => (
           <Carousel.Slide key={product.id}>
             <div className={styles.productCard}>
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className={styles.productImage}
-                />
+              <img
+                loading="lazy"
+                src={product.image}
+                alt={product.name}
+                className={styles.productImage}
+              />
 
               <div className={styles.productDetails}>
                 <h3

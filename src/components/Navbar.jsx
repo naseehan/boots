@@ -13,7 +13,7 @@ const Navbar = () => {
 
 
      <Link to="/">
-        <img src={logo} alt="logo" className="navbar-brand " loading="lazy" title="Signature Sports"/>
+        <img src={logo} alt="logo" className="navbar-brand" loading="lazy" title="Signature Sports"/>
       </Link>
 
       <button

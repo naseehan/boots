@@ -14,6 +14,10 @@ const ContactItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  @media (max-width: 810px){
+  border-bottom: 1px solid #9DB2BF;
+  padding-bottom: 1rem;
+  }
 `;
 
 const ContactIcon = styled.i`

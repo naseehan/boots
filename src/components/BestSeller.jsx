@@ -39,31 +39,31 @@ export default function BestSeller() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src={anza} />
+          <img src={anza} loading="lazy"/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img src="https://swiperjs.com/demos/images/nature-2.jpg" loading="lazy"/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img src="https://swiperjs.com/demos/images/nature-3.jpg" loading="lazy"/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img src="https://swiperjs.com/demos/images/nature-4.jpg" loading="lazy"/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          <img src="https://swiperjs.com/demos/images/nature-5.jpg" loading="lazy"/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          <img src="https://swiperjs.com/demos/images/nature-6.jpg" loading="lazy"/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+          <img src="https://swiperjs.com/demos/images/nature-7.jpg" loading="lazy"/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+          <img src="https://swiperjs.com/demos/images/nature-8.jpg" loading="lazy"/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          <img src="https://swiperjs.com/demos/images/nature-9.jpg" loading="lazy"/>
         </SwiperSlide>
       </Swiper>
     

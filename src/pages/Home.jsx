@@ -15,11 +15,11 @@ const Home = () => {
   return (
     <>
     <div className='home-container'>
-      <img src={homeBg} alt="home background" className='home-bg'/>
+      <img src={homeBg} alt="home background" className='home-bg' loading="lazy"/>
       <div className="homeOverlay"></div>
       {/* <div className="home"> */}
       <div className="main-image">
-        <img src={homeImg} alt="" />
+        <img src={homeImg} alt=""  loading="lazy"/>
       </div>
       <div className="main-details">
         <div className="inside-div">

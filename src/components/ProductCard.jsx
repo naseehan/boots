@@ -75,8 +75,6 @@ function Card2() {
 
   const currentItems = sortedItems.slice(offset, offset + perPage);
 
-
-
   const handlePrevious = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -97,13 +95,17 @@ function Card2() {
     <div>
       <div className="position-relative d-grid">
         <div className="d-flex justify-content-around align-items-center category-manuel-styles">
-          <p style={{color:"#9DB2BF"}}>Showing {currentItems.length} of {totalProducts}</p>
+          <p style={{ color: "#9DB2BF" }}>
+            Showing {currentItems.length} of {totalProducts}
+          </p>
           <div className="d-flex gap-3 cate-nav-buttons">
             <button onClick={() => handleCategoryChange("")}>
               All Products
             </button>
             <button onClick={() => handleCategoryChange("shoes")}>Shoes</button>
-            <button onClick={() => handleCategoryChange("balls")}>Sports Balls</button>
+            <button onClick={() => handleCategoryChange("balls")}>
+              Sports Balls
+            </button>
           </div>
           <div>
             <Select
@@ -131,6 +133,7 @@ function Card2() {
             >
               <div className="position-relative" style={{ height: "14rem" }}>
                 <img
+                  loading="lazy"
                   src={data.image}
                   className="card-img-top object-fit-cover"
                   alt="shoes"
