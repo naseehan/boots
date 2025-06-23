@@ -55,7 +55,7 @@ const Navbar = () => {
           </li>
           <li className="nav-item active">
             <Link
-              to="/events"
+              to="/about"
               className="nav-link"
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
