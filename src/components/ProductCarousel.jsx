@@ -1,4 +1,4 @@
-\import { Carousel } from "@mantine/carousel";
+import { Carousel } from "@mantine/carousel";
 import "@mantine/carousel/styles.css";
 import styles from "./Gh.module.css";
 import products from "./products";
