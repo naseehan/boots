@@ -19,13 +19,13 @@ const Navbar = () => {
       <button
         className="navbar-toggler menu__icon"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        {/* <span className="navbar-toggler-icon"></span> */}
+        <span className="navbar-toggler-icon"></span>
       </button>
 
       <div
@@ -45,7 +45,7 @@ const Navbar = () => {
           </li>
           <li className="nav-item active">
             <Link
-              to="/events"
+              to="/products"
               className="nav-link"
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
@@ -73,11 +73,7 @@ const Navbar = () => {
               Contact US
             </Link>
           </li>
-        
-         
-
-        
-         
+      
         </ul>
       
       </div>

@@ -11,13 +11,15 @@ const Categories = () => {
         <button>Show More Categories</button>
       </div>
       <div className="cates mts">
-       { data.map((data) => (
-<div className='each-cates'>
+       { data.map((data, index) => {
+        
+        return(
+<div className='each-cates' data-aos={index % 2 == 0 ? 'fade-up' : 'fade-down'} key={index} data-aos-duration="800">
 <img src={data.img} alt="categories" loading='lazy'/>
         <p>{data.name}</p>
 </div>
-        ))
-        }
+       )}
+       )}
       </div>
     </div>
   )

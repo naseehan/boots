@@ -38,7 +38,6 @@ const Home = () => {
     <BestSeller />
     <ChooseUs />
     <InfiniteCarousel />
-   {/* <ProductCard/> */}
     </>
 
   )

@@ -33,6 +33,9 @@ nav {
  button span {
   background-image: none;
 }
+button:focus{
+  box-shadow: none !important;
+}
 /* <main-style> ============================ */
 .menu__icon {
   width: 2rem;

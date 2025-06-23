@@ -9,7 +9,7 @@ const MostPopular = () => {
         <h1 className='h1-heading'>Most Popular Products</h1>
         </div>
         <div className="popular mts">
-      {products.map((product) => (
+      {products.shoes.slice(0,4).map((product) => (
         <div className="each-products" key={product.id}>
           <img src={product.image} alt={product.name} />
           <div className='product-details'>

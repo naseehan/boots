@@ -1,61 +1,209 @@
-'use client';
-import React, { useState } from 'react';
-// import Image from 'next/image';
-import { Heart } from 'lucide-react';
-import { motion } from 'motion/react';
-function ProductCard() {
-  const [isActive, setIsActive] = useState(false);
-  const handleClick = () => {
-    setIsActive((prevState) => !prevState);
+import React, { useState } from "react";
+// import { Heart } from 'lucide-react';
+import styled from "styled-components";
+import products from "./products";
+import { div } from "motion/react-client";
+import "../stylePages/productCard/App.css";
+import { useNavigate } from "react-router-dom";
+
+const Button = styled.button`
+  border: 2px solid #000;
+  padding: 0.6rem 0.75rem;
+  margin-top: auto;
+  &:hover {
+    color: #fff;
+    background: linear-gradient(to right, #3e5068, #0c1970);
+  }
+`;
+const CardBody = styled.div`
+  display: grid;
+  gap: 1.4rem;
+  padding: 1.3rem;
+`;
+const Text = styled.h5`
+  font-weight: 700;
+`;
+const Select = styled.select`
+  &:focus-visible {
+    outline: none;
+  }
+`;
+function Card2() {
+  const navigate = useNavigate();
+
+  const handleClick = (slug) => {
+    navigate(`/products/${slug}`);
   };
+
+  // for sorting by price and category
+  const [sortValue, setSortValue] = useState("");
+  const [category, setCategory] = useState("");
+
+  const handleCategoryChange = (cat) => {
+    setCategory(cat);
+    setCurrentPage(1); // reset to page 1
+  };
+
+  const handleChange = (e) => {
+    setSortValue(e.target.value);
+    setCurrentPage(1);
+  };
+
+  // sorting by price && sorting by category
+
+  const selectedProducts =
+    category && products[category]
+      ? products[category]
+      : Object.values(products).flat();
+
+  let sortedItems = [...selectedProducts].sort((a, b) => {
+    if (sortValue === "low-high") return a.price - b.price;
+    if (sortValue === "high-low") return b.price - a.price;
+    return 0;
+  });
+
+  // for pagination
+  const totalProducts = sortedItems.length;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const perPage = 8;
+
+  const totalPage = Math.ceil(totalProducts / perPage);
+  const pageNumber = Array.from({ length: totalPage }, (_, i) => i + 1);
+
+  const offset = (currentPage - 1) * perPage;
+
+  const currentItems = sortedItems.slice(offset, offset + perPage);
+
+
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  // clicking next button
+  const handleNext = () => {
+    if (currentPage < totalPage) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  //  clicking page number
+  const handlePageNumberClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
-    <div className="w-[350px] mx-auto ">
-      <div className="dark:bg-white bg-gray-50 border dark:border-none  rounded-2xl">
-        <div className="w-full h-56 relative">
-          <motion.button
-            className="absolute top-2 right-3 z-20 text-2xl text-white"
-            onClick={handleClick}
-            animate={{ scale: isActive ? 1.2 : 1 }}
-            transition={{ type: 'spring', stiffness: 1000, damping: 10 }}>
-            {isActive ? (
-              <>
-                <Heart className=" fill-white" />
-              </>
-            ) : (
-              <>
-                <Heart />
-              </>
-            )}
-          </motion.button>
-          <img
-            src={
-              'https://images.unsplash.com/photo-1605733160314-4fc7dac4bb16?q=80&w=2090&auto=format&fit=crop'
-            }
-            alt="shoes"
-            width={1000}
-            height={1000}
-            className={`h-56 w-full rounded-2xl object-cover `}
-          />
-        </div>
-        <article className="text-black space-y-2 p-2 pb-3">
-          <div className="flex justify-between">
-            <h1 className="font-semibold text-xl text-primary-dark">
-              Nike Air Max
-            </h1>
-            <span className="font-medium text-xl text-primary-dark">$394</span>
+    <div>
+      <div className="position-relative d-grid">
+        <div className="d-flex justify-content-around align-items-center category-manuel-styles">
+          <p style={{color:"#9DB2BF"}}>Showing {currentItems.length} of {totalProducts}</p>
+          <div className="d-flex gap-3 cate-nav-buttons">
+            <button onClick={() => handleCategoryChange("")}>
+              All Products
+            </button>
+            <button onClick={() => handleCategoryChange("shoes")}>Shoes</button>
+            <button onClick={() => handleCategoryChange("balls")}>Sports Balls</button>
           </div>
-          <p className="text-xs  text-black">
-            Lorem ipsum, dolor sit amet consectetur adipisicing
-          </p>
+          <div>
+            <Select
+              name="sort"
+              id="sort"
+              onChange={handleChange}
+              defaultValue=""
+              className="form-select cursor-pointer"
+            >
+              <option value="" disabled hidden>
+                Sort By
+              </option>
+              <option value="high-low">Price : High-Low</option>
+              <option value="low-high">Price : Low-High</option>
+            </Select>
+          </div>
+        </div>
 
-          <button className="w-full hover:text-white flex justify-center items-center gap-2 border-black border-2 text-black hover:bg-black">
-  Add to cart
-</button>
+        <div className="container-fluid  d-flex flex-wrap gap-4 justify-content-center my-5 ">
+          {currentItems.map((data) => (
+            <div
+              key={data.id}
+              className="card shadow-sm"
+              style={{ width: "20rem", borderRadius: "1rem", border: "1px" }}
+            >
+              <div className="position-relative" style={{ height: "14rem" }}>
+                <img
+                  src={data.image}
+                  className="card-img-top object-fit-cover"
+                  alt="shoes"
+                  style={{
+                    height: "100%",
+                    objectFit: "cover",
+                    borderTopLeftRadius: "1rem",
+                    borderTopRightRadius: "1rem",
+                  }}
+                />
+              </div>
+              <CardBody className="card-body text-dark">
+                <div className="d-flex justify-content-between mb-2">
+                  <Text
+                    className="card-title mb-0 fw-bold"
+                    style={{ maxWidth: "20ch" }}
+                  >
+                    {data.name}
+                  </Text>
+                  <span
+                    className="fw-semibold"
+                    style={{ fontWeight: 600, fontSize: "1.1rem" }}
+                  >
+                    ₹{data.price}
+                  </span>
+                </div>
+                <p className="card-text small text-black">{data.desc}</p>
+                <Button
+                  className="btn w-100 "
+                  style={{
+                    backgroundColor: "white",
+                    transition: "background 0.3s ease",
+                  }}
+                  onClick={() => handleClick(data.slug)}
+                >
+                  More Details
+                </Button>
+              </CardBody>
+            </div>
+          ))}
+        </div>
 
-
-        </article>
+        {/* pagination */}
+        <div className="pagination">
+          <button
+            className="paginationButton"
+            onClick={handlePrevious}
+            disabled={currentPage === 1}
+          >
+            ⬅️
+          </button>
+          {pageNumber.map((pageNum) => (
+            <button
+              className={`paginationButton ${
+                currentPage === pageNum ? "active " : ""
+              }`}
+              key={pageNum}
+              onClick={() => handlePageNumberClick(pageNum)}
+            >
+              {pageNum}
+            </button>
+          ))}
+          <button
+            className="paginationButton"
+            onClick={handleNext}
+            disabled={currentPage === totalPage}
+          >
+            ➡️
+          </button>
+        </div>
       </div>
     </div>
   );
 }
-export default ProductCard;
+
+export default Card2;
