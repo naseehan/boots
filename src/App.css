@@ -21,3 +21,9 @@ h3{
     font-size: 3rem;
     color: #ffa500;
 }
+
+@media (max-width:500px){
+    .common-container{
+        margin: 2rem;
+    }
+}

@@ -29,3 +29,9 @@
     font-weight: 400;
     font-family: 'Roboto Condensed';
 }
+
+@media (max-width: 500px){
+    .choose-us-container{
+        margin: 2rem;
+    }
+}
