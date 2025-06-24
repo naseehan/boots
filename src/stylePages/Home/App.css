@@ -114,4 +114,7 @@
   .inside-div{
     width: auto;
   }
+  .fancyBtn {
+    padding: 10px;
+  }
 }
