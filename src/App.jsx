@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -10,6 +10,14 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 
 function App() {
+
+useEffect(() => {
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'auto'; // or 'manual' if you're handling it yourself
+}
+
+},[])
+
   return (
     <div>
       <Navbar />

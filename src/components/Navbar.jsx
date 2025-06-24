@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import '../stylePages/Navbar/App.css'
 import logo from '../assets/logo.png'
 
 const Navbar = () => {
-  const navigate = useNavigate();
 
     useEffect(() => {
     const navLinks = document.querySelectorAll('.nav-link');

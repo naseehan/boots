@@ -2,8 +2,6 @@ nav a img {
   height: 76px;
 }
 nav {
-  /* background-image: url(../../assets/bg.jpg); */
-  /* background: linear-gradient(90deg, hsla(214, 33%, 26%, 1) 46%, hsla(360, 78%, 62%, 1) 100%); */
   background: #1b261b;
   object-fit: cover;
   background-size: cover;
