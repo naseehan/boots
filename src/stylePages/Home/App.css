@@ -109,7 +109,7 @@
 
 @media (max-width: 500px){
   .home-container{
-        grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
   }
   .inside-div{
     width: auto;
