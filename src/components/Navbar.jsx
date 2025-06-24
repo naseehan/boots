@@ -6,10 +6,31 @@ import logo from '../assets/logo.png'
 const Navbar = () => {
   const navigate = useNavigate();
 
+    useEffect(() => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const collapseElement = document.getElementById('navbarSupportedContent');
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (collapseElement.classList.contains('show')) {
+          new bootstrap.Collapse(collapseElement).hide();
+        }
+      });
+    });
+
+    // Cleanup
+    return () => {
+      navLinks.forEach((link) => {
+        link.removeEventListener('click', () => {});
+      });
+    };
+  }, []);
+
+
  
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light">
+    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
 
 
      <Link to="/">
