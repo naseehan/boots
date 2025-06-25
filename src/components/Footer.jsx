@@ -1,6 +1,10 @@
 import React from 'react';
 
 const Footer = () => {
+
+const year = new Date().getFullYear()
+
+
   return (
     <div>
       {/* Footer */}
@@ -136,7 +140,7 @@ const Footer = () => {
             backgroundColor: "rgba(0, 0, 0, 0.2)",
           }}
         >
-          © 2024 Copyright: 
+          © {year} Copyright: 
           <a className="text-dark" href="jr sports">
              signaturesports.com
           </a>
