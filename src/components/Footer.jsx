@@ -34,39 +34,6 @@ const year = new Date().getFullYear()
                 </p>
               </div>
 
-              {/* Grid column */}
-              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                {/* Links */}
-                <h6 className="text-uppercase fw-bold">Products</h6>
-                <hr
-                  className="mb-4 mt-0 d-inline-block mx-auto"
-                  style={{
-                    width: "60px",
-                    backgroundColor: "#7c4dff",
-                    height: "2px",
-                  }}
-                />
-                <p>
-                  <a href="#!" className="text-dark">
-                    MDBootstrap
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" className="text-dark">
-                    MDWordPress
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" className="text-dark">
-                    BrandFlow
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" className="text-dark">
-                    Bootstrap Angular
-                  </a>
-                </p>
-              </div>
 
               {/* Grid column */}
               <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
