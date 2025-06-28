@@ -1,26 +1,22 @@
-import anza from "../assets/anza.png"
-import racket from "../assets/racket.png"
-import football from "../assets/football.png"
-import volleyball from "../assets/volleyball.jpg"
-import cricket from "../assets/cricket.jpg"
 
 
  const cates = [
     {
-        img: racket,
-        name: "Shuttle Racket"
+        img: '/categories/cate-racquets.png',
+        name: "racquets"
+
     },
     {
-        img: football,
-        name: "Football"
+        img: '/categories/cate-ball.png',
+        name: "sports balls"
     },
     {
-        img: volleyball,
-        name: "volleyball"
+        img: '/categories/cate-shoe.jpg',
+        name: "shoes"
     },
     {
-        img: cricket,
-        name: "Football"
+        img: '/categories/cate-board.jpg',
+        name: "board games"
     }
 ]
 

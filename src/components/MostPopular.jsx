@@ -16,7 +16,7 @@ const MostPopular = () => {
         <h1 className="h1-heading">Most Popular Products</h1>
       </div>
       <div className="popular mts">
-        {products.shoes.slice(0, 4).map((product) => (
+        {products.shoes.slice(4, 8).map((product) => (
           <div className="each-products" key={product.id}>
             <img src={product.image} alt={product.name} loading="lazy" />
             <div className="product-details">

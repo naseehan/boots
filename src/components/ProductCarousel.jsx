@@ -1,9 +1,16 @@
 import { Carousel } from "@mantine/carousel";
 import "@mantine/carousel/styles.css";
-import styles from "./Gh.module.css";
+import styles from "./productcarousel.module.css";
 import products from "./products";
+import { useNavigate } from "react-router-dom";
 
 function ProductCarousel() {
+  const navigate = useNavigate();
+
+  const handleClick = (slug) => {
+    navigate(`/products/${slug}`);
+  };
+
   return (
     <div>
       <h3 className="mt-5 ms-4"> You Might Also Like </h3>
@@ -35,9 +42,11 @@ function ProductCarousel() {
                 >
                   {product.name}
                 </h3>
-                <p className={styles.productCategory}>{product.category}</p>
+                <p className={styles.productCategory} style={{textTransform: "capitalize"}}>{product.category}</p>
                 <p className={styles.productPrice}>RS. {product.price}</p>
-                <button>view more</button>
+                <button onClick={() => handleClick(product.slug)}>
+                  view more
+                </button>
               </div>
             </div>
           </Carousel.Slide>

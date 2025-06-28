@@ -1,32 +1,25 @@
-import React from 'react'
-import data from "./CatesData"
-import "../stylePages/Categories/App.css"
+import React from "react";
+import data from "./CatesData";
+import "../stylePages/Categories/App.css";
 
 const Categories = () => {
-    
   return (
-    <div className='common-container'>
+    <div className="common-container">
       <div className="cate-heading mt">
-        <h1 className='h1-heading'>Our Categories</h1>
-        <button>Show More Categories</button>
+        <h1 className="h1-heading">Our Categories</h1>
       </div>
       <div className="cates mts">
-       { data.map((data, index) => {
-        
-        return(
-<div className='each-cates' 
-// data-aos={index % 2 == 0 ? 'fade-up' : 'fade-down'} 
-key={index} 
-// data-aos-duration="800"
->
-<img src={data.img} alt="categories" loading='lazy'/>
-        <p>{data.name}</p>
-</div>
-       )}
-       )}
+        {data.map((data, index) => {
+          return (
+            <div className="each-cates" key={index}>
+              <img src={data.img} alt="categories" loading="lazy" />
+              <p style={{ textTransform: "capitalize" }}>{data.name}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Categories
+export default Categories;

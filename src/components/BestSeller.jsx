@@ -1,7 +1,6 @@
-import React, { useRef, useState } from 'react';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import anza from "../assets/anza.png"
 
 // Import Swiper styles
 import 'swiper/css';
@@ -13,6 +12,8 @@ import '../stylePages/bestSeller/App.css';
 
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+
+import products from './products';
 
 
 export default function BestSeller() {
@@ -38,33 +39,13 @@ export default function BestSeller() {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src={anza} loading="lazy"/>
+        {products.shoes.slice(0,4).map((product)=> (
+ <SwiperSlide>
+          <img src={product.image} loading="lazy"/>
+          <p style={{alignSelf: "center", fontSize: "19px", fontFamily: 600, textAlign:"center"}}>{product.name}</p>
         </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" loading="lazy"/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" loading="lazy"/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" loading="lazy"/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" loading="lazy"/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" loading="lazy"/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" loading="lazy"/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" loading="lazy"/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" loading="lazy"/>
-        </SwiperSlide>
+        ))}
+             
       </Swiper>
     
     </div>

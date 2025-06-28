@@ -1,9 +1,7 @@
-import React from 'react';
-
+import React from "react";
+import { Link } from "react-router-dom";
 const Footer = () => {
-
-const year = new Date().getFullYear()
-
+  const year = new Date().getFullYear();
 
   return (
     <div>
@@ -30,10 +28,11 @@ const year = new Date().getFullYear()
                   }}
                 />
                 <p>
-                 Gear up for greatness with top-quality sportswear, footwear, and equipment for every athlete. Shop the brands you love — all in one place!
+                  Gear up for greatness with top-quality sportswear, footwear,
+                  and equipment for every athlete. Shop the brands you love —
+                  all in one place!
                 </p>
               </div>
-
 
               {/* Grid column */}
               <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -48,24 +47,16 @@ const year = new Date().getFullYear()
                   }}
                 />
                 <p>
-                  <a href="#!" className="text-dark">
-                    Your Account
-                  </a>
+                  <Link to="/">Home</Link>
                 </p>
                 <p>
-                  <a href="#!" className="text-dark">
-                    Become an Affiliate
-                  </a>
+                  <Link to="/products">Products</Link>
                 </p>
                 <p>
-                  <a href="#!" className="text-dark">
-                    Shipping Rates
-                  </a>
+                  <Link to="/about">About</Link>
                 </p>
                 <p>
-                  <a href="#!" className="text-dark">
-                    Help
-                  </a>
+                  <Link to="/contact">Contact US</Link>
                 </p>
               </div>
 
@@ -82,13 +73,15 @@ const year = new Date().getFullYear()
                   }}
                 />
                 <p>
-                  <i className="fas fa-home mr-3"></i> Kallambalam, Kerala , India
+                  <i className="fas fa-home mr-3"></i> Kallambalam, Kerala ,
+                  India
                 </p>
                 <p>
                   <i className="fas fa-envelope mr-3"></i> info@example.com
                 </p>
                 <p>
-                  <i className="fas fa-phone mr-3"></i><a href="https://wa.me/919745885553">+ 01 234 567 88</a> 
+                  <i className="fas fa-phone mr-3"></i>
+                  <a href="https://wa.me/919745885553">+ 01 234 567 88</a>
                 </p>
                 <p>
                   <i className="fas fa-print mr-3"></i> + 01 234 567 89
@@ -107,9 +100,9 @@ const year = new Date().getFullYear()
             backgroundColor: "rgba(0, 0, 0, 0.2)",
           }}
         >
-          © {year} Copyright: 
-          <a className="text-dark" href="jr sports">
-             signaturesports.com
+          © {year} Copyright:{" "}
+          <a className="text-dark" href="">
+            https://signature-sports.onrender.com/
           </a>
         </div>
         {/* Copyright */}

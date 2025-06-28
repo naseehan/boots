@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-// import { Heart } from 'lucide-react';
 import styled from "styled-components";
 import products from "./products";
-import { div } from "motion/react-client";
 import "../stylePages/productCard/App.css";
 import { useNavigate } from "react-router-dom";
 
@@ -105,6 +103,12 @@ function Card2() {
             <button onClick={() => handleCategoryChange("shoes")}>Shoes</button>
             <button onClick={() => handleCategoryChange("balls")}>
               Sports Balls
+            </button>
+            <button onClick={() => handleCategoryChange("boardgames")}>
+              Board Games
+            </button>
+            <button onClick={() => handleCategoryChange("racquets")}>
+              Racquet
             </button>
           </div>
           <div>
