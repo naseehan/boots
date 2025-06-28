@@ -1,6 +1,6 @@
 import { Carousel } from "@mantine/carousel";
 import "@mantine/carousel/styles.css";
-import styles from "./productcarousel.module.css";
+import styles from "./productCarousel.module.css";
 import products from "./products";
 import { useNavigate } from "react-router-dom";
 
