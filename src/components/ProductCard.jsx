@@ -96,19 +96,21 @@ function Card2() {
           <p style={{ color: "#9DB2BF" }}>
             Showing {currentItems.length} of {totalProducts}
           </p>
-          <div className="d-flex gap-3 cate-nav-buttons">
+          <div className="d-flex gap-3 flex-wrap mx-3 cate-nav-buttons">
             <button onClick={() => handleCategoryChange("")}>
-              All Products
+              <span class="button_top"> All Products </span>
             </button>
-            <button onClick={() => handleCategoryChange("shoes")}>Shoes</button>
+            <button onClick={() => handleCategoryChange("shoes")}>
+              <span class="button_top"> Shoes </span>
+            </button>
             <button onClick={() => handleCategoryChange("balls")}>
-              Sports Balls
+              <span class="button_top"> Sports Balls </span>
             </button>
             <button onClick={() => handleCategoryChange("boardgames")}>
-              Board Games
+              <span class="button_top"> Board Games </span>
             </button>
             <button onClick={() => handleCategoryChange("racquets")}>
-              Racquet
+              <span class="button_top"> Racquet </span>
             </button>
           </div>
           <div>
