@@ -3,6 +3,7 @@ import styled from "styled-components";
 import products from "./products";
 import "../stylePages/productCard/App.css";
 import { useNavigate } from "react-router-dom";
+import { style } from "motion/react-client";
 
 const Button = styled.button`
   border: 2px solid #000;
@@ -18,8 +19,26 @@ const CardBody = styled.div`
   gap: 1.4rem;
   padding: 1.3rem;
 `;
+const ProductBody = styled.div`
+  width: 20rem;
+  border-radius: 1rem;
+  transition: all 0.3s;
+  box-shadow: 0 0 #0000, 0 0 #000, 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 1);
+  &:hover{
+  transform: translateY(-0.5rem);
+  }
+`;
+
 const Text = styled.h5`
   font-weight: 700;
+`;
+const Desc = styled.p`
+display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 `;
 const Select = styled.select`
   &:focus-visible {
@@ -132,11 +151,7 @@ function Card2() {
 
         <div className="container-fluid  d-flex flex-wrap gap-4 justify-content-center my-5 ">
           {currentItems.map((data) => (
-            <div
-              key={data.id}
-              className="card shadow-sm"
-              style={{ width: "20rem", borderRadius: "1rem", border: "1px" }}
-            >
+            <ProductBody key={data.id} className="card shadow-sm">
               <div className="position-relative" style={{ height: "14rem" }}>
                 <img
                   loading="lazy"
@@ -166,7 +181,7 @@ function Card2() {
                     ₹{data.price}
                   </span>
                 </div>
-                <p className="card-text small text-black">{data.desc}</p>
+                <Desc className="card-text small text-black">{data.desc}</Desc>
                 <Button
                   className="btn w-100 "
                   style={{
@@ -178,7 +193,7 @@ function Card2() {
                   More Details
                 </Button>
               </CardBody>
-            </div>
+            </ProductBody>
           ))}
         </div>
 
