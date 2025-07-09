@@ -13,10 +13,7 @@ const ChooseUs = () => {
       <div className="common-pic">
         <h2>WHY CHOOSE US</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam,
-          eveniet veritatis, ex ratione quae sit, est consequuntur veniam eum
-          magni quod error debitis? Odio magnam culpa adipisci mollitia cumque
-          fugiat?
+          At Signature Sports, we believe the right gear makes all the difference. That’s why we offer top-quality sports apparel, footwear, and equipment from trusted brands to help you perform at your best. Whether you’re training, competing, or staying active, our easy shopping experience, fast shipping, and dedicated support ensure you get exactly what you need, when you need it.
         </p>
 
         <button className="buyNow">Buy Now</button>

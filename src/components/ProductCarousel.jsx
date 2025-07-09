@@ -8,6 +8,7 @@ function ProductCarousel() {
   const navigate = useNavigate();
 
   const handleClick = (slug) => {
+    window.scrollTo(0,0)
     navigate(`/products/${slug}`);
   };
 
