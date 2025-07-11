@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import homeImg from "../assets/home-img.png";
 import "../stylePages/Home/App.css";
 import Categories from "../components/Categories";
@@ -11,6 +11,8 @@ import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+
+
   return (
     <>
       <div className="home-container">

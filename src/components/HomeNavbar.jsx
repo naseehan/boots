@@ -1,12 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "../stylePages/Navbar/App.css";
 import logo from "../assets/logo.png";
 
-const Navbar = () => {
+const HomeNavbar = () => {
+  const [current, setCurrent] = useState();
 
   useEffect(() => {
+    const handle = () => {
+      setCurrent(window.scrollY);
+    };
+    window.addEventListener("scroll", handle);
 
-  
     const navLinks = document.querySelectorAll(".nav-link");
     const collapseElement = document.getElementById("navbarSupportedContent");
 
@@ -26,11 +31,12 @@ const Navbar = () => {
     };
   }, []);
 
-
+  //
   return (
     <nav
-      className={"navbar navbar-expand-lg navbar-light fixed-top"}
-      style={{backgroundColor: '#000'}}
+      className={`navbar navbar-expand-lg navbar-light fixed-top
+  ${current > 799 ? "navbar-scroll-style" : ""} 
+     `}
     >
       <Link to="/">
         <img
@@ -105,4 +111,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default HomeNavbar;
