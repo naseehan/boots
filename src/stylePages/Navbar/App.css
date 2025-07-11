@@ -2,7 +2,7 @@ nav a img {
   height: 76px;
 }
 nav {
-  background: #1b261b;
+  /* background-color: #1b261b; */
   object-fit: cover;
   background-size: cover;
   background-position: 50%;
@@ -17,10 +17,19 @@ nav {
 }
 .div-own-styles {
   justify-content: flex-end;
+  /* background-color: #000; */
+}
+/* .bgColor{
+  background-color: #000;
+} */
+
+.navbar-scroll-style {
+  background-color: #000;
+  transition: background-color 0.3s ease;
 }
 
 /* <reset-style> ============================ */
- button {
+button {
   border: none;
   background: none;
   padding: 0;
@@ -28,10 +37,10 @@ nav {
   cursor: pointer;
   font-family: inherit;
 }
- button span {
+button span {
   background-image: none;
 }
-button:focus{
+button:focus {
   box-shadow: none !important;
 }
 /* <main-style> ============================ */
@@ -107,4 +116,11 @@ button:focus{
 /* button click effect*/
 .Btn:active {
   transform: translate(2px, 2px);
+}
+
+@media (max-width: 991.50px) {
+  .show,
+  .collapsing {
+    background-color: #000;
+  }
 }
