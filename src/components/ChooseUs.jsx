@@ -8,7 +8,6 @@ const ChooseUs = () => {
     <div className="choose-us-container">
       <div className="common-pic">
         <img src={main1} alt="jr sports" loading="lazy"/>
-        {/* <h2>SHOP NOW</h2> */}
         
       </div>
       <div className="common-pic">
