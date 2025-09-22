@@ -55,7 +55,7 @@ const Contact = () => {
         <ContactItem>
           <ContactIcon className="fa-solid fa-envelope fa-2xl"></ContactIcon>
           <p>Email us</p>
-          <p>We'll reply within five business day</p>
+          <p>We'll reply within five business days</p>
         </ContactItem>
 
         <ContactItem>
