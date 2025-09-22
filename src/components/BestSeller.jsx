@@ -1,55 +1,122 @@
+import React, { useEffect } from "react";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import { Link, useNavigate } from "react-router-dom";
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import "../stylePages/bestSeller/App.css";
+import products from "./products";
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
+const animation = { duration: 30000, easing: (t) => t };
 
-import '../stylePages/bestSeller/App.css';
+const BestSeller = () => {
+  // Keen slider setup
+  const [sliderRef, instanceRef] = useKeenSlider({
+    loop: true,
+    renderMode: "performance",
+    origin: "center",
+    drag: true,
+    slides: {
+      perView: 3,
+      spacing: 80,
+    },
+    breakpoints: {
+      "(max-width: 1024px)": {
+        slides: {
+          perView: 2,
+          spacing: 16,
+        },
+      },
+      "(max-width: 640px)": {
+        slides: {
+          perView: 1,
+          spacing: 10,
+        },
+      },
+    },
+    created(s) {
+      s.moveToIdx(5, true, animation);
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs + 5, true, animation);
+    },
+    animationEnded(s) {
+      s.moveToIdx(s.track.details.abs + 5, true, animation);
+    },
+  });
+
+  // Pause on hover
+  React.useEffect(() => {
+    if (!instanceRef.current) return;
+    const sliderEl = instanceRef.current.container;
+
+    const stop = () => instanceRef.current?.animator.stop();
+    const resume = () =>
+      instanceRef.current?.moveToIdx(
+        instanceRef.current.track.details.abs + 5,
+        true,
+        animation
+      );
+
+    sliderEl.addEventListener("mouseover", stop);
+    sliderEl.addEventListener("mouseleave", resume);
+
+    return () => {
+      sliderEl.removeEventListener("mouseover", stop);
+      sliderEl.removeEventListener("mouseleave", resume);
+    };
+  }, [instanceRef]);
 
 
-// import required modules
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+  let navigate = useNavigate();
+  const handleClick = (slug) => {
+     navigate(`/products/${slug}`);
+  };
 
-import products from './products';
-
-
-export default function BestSeller() {
   return (
-    <div >
-    <div className="best-seller-heading">
-        <h1 className='h1-heading'>Our Best Sellers</h1>
+    <div className="">
+      {/* heading */}
+      <div className="best-seller-heading">
+        <h1 className="h1-heading">Our Best Sellers</h1>
       </div>
-    <div className='swiper-container'>
-      <Swiper
-        effect={'coverflow'}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={'auto'}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination]}
-        className="mySwiper"
-      >
-        {products.shoes.slice(0,4).map((product)=> (
- <SwiperSlide>
-          <img src={product.image} loading="lazy"/>
-          <p style={{alignSelf: "center", fontSize: "19px", fontFamily: 600, textAlign:"center"}}>{product.name}</p>
-        </SwiperSlide>
+
+      {/* carousel */}
+      <div ref={sliderRef} className="keen-slider home-slider" id="slider">
+        {products.shoes.map((item) => (
+          <div
+            key={item.id}
+            className="keen-slider__slide number-slide1 group"
+            onClick={() => handleClick(item.slug)}
+          >
+            <div className="keenslider-image-container">
+              <img
+                className=""
+                src={item.image}
+                loading="lazy"
+                alt={item.name}
+              />
+            </div>
+
+            {/* overlay */}
+            <div
+              className="custom-overlay"
+            >
+              <h3>
+                {item.name}
+              </h3>
+              <p>
+                LEARN MORE
+              </p>
+            </div>
+          </div>
         ))}
-             
-      </Swiper>
-    
-    </div>
+      </div>
+
+      {/* button */}
+      <div className="button-container pb-20">
+        <Link to="/products">MORE PRODUCTS</Link>
+      </div>
     </div>
   );
-}
+};
 
+export default BestSeller;

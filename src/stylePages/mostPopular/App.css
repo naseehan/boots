@@ -20,6 +20,7 @@
 .each-products img {
   height: 200px;
   width: 280px;
+  object-fit: cover;
 }
 .product-details {
   padding: 2rem;

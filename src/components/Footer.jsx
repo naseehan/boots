@@ -47,16 +47,16 @@ const Footer = () => {
                   }}
                 />
                 <p>
-                  <Link to="/">Home</Link>
+                  <Link to="/" className="text-dark text-decoration-none">Home</Link>
                 </p>
                 <p>
-                  <Link to="/products">Products</Link>
+                  <Link to="/products" className="text-dark text-decoration-none">Products</Link>
                 </p>
                 <p>
-                  <Link to="/about">About</Link>
+                  <Link to="/about" className="text-dark text-decoration-none">About</Link>
                 </p>
                 <p>
-                  <Link to="/contact">Contact US</Link>
+                  <Link to="/contact" className="text-dark text-decoration-none">Contact US</Link>
                 </p>
               </div>
 

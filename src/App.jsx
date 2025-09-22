@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Error from "./pages/Error";
 import Navbar from "./components/Navbar";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 
@@ -30,7 +31,7 @@ if ('scrollRestoration' in window.history) {
   return (
     <div>
       {isHome ? <HomeNavbar /> : <Navbar />}
-
+    <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />

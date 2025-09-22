@@ -156,11 +156,10 @@ function Card2() {
                 <img
                   loading="lazy"
                   src={data.image}
-                  className="card-img-top object-fit-cover"
+                  className="card-img-top object-fit-contain"
                   alt="shoes"
                   style={{
                     height: "100%",
-                    objectFit: "cover",
                     borderTopLeftRadius: "1rem",
                     borderTopRightRadius: "1rem",
                   }}
