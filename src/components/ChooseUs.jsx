@@ -8,11 +8,11 @@ const ChooseUs = () => {
     <div className="choose-us-container">
       <div className="common-pic">
         <img src={main1} alt="jr sports" loading="lazy"/>
-        <h2>SHOP NOW</h2>
+        {/* <h2>SHOP NOW</h2> */}
         
       </div>
       <div className="common-pic">
-        <h2>WHY CHOOSE US</h2>
+        <h4>WHY CHOOSE US</h4>
         <p>
           At Signature Sports, we believe the right gear makes all the difference. That’s why we offer top-quality sports apparel, footwear, and equipment from trusted brands to help you perform at your best. Whether you’re training, competing, or staying active, our easy shopping experience, fast shipping, and dedicated support ensure you get exactly what you need, when you need it.
         </p>

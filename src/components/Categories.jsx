@@ -14,7 +14,7 @@ const handleClick = () => {
   return (
     <div className="common-container">
       <div className="cate-heading mt">
-        <h1 className="h1-heading">Our Categories</h1>
+        <h3 className="h1-heading">Our Categories</h3>
       </div>
       <div className="cates mts">
         {data.map((data, index) => {

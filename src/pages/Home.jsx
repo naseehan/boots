@@ -31,7 +31,7 @@ const Home = () => {
             <h1 style={{ color: "#ffb658", "font-size": "3rem" }}>
               SIGNATURE SPORTS
             </h1>
-            <h3>BEST SPORTS SHOP IN KALLAMBALAM</h3>
+            <h2>BEST SPORTS SHOP IN KALLAMBALAM</h2>
             <p>
               Browse our latest collectins and find the perfect equipments for
               your sports life. With a variety of designs, size and colors.

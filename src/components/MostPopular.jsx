@@ -13,7 +13,7 @@ const MostPopular = () => {
   return (
     <div className="most-popular-container">
       <div className="cate-heading">
-        <h1 className="h1-heading">Most Popular Products</h1>
+        <h3 className="h1-heading">Most Popular Products</h3>
       </div>
       <div className="popular mts">
         {products.shoes.slice(4, 8).map((product) => (

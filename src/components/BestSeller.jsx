@@ -76,7 +76,7 @@ const BestSeller = () => {
     <div className="">
       {/* heading */}
       <div className="best-seller-heading">
-        <h1 className="h1-heading">Our Best Sellers</h1>
+        <h3 className="h1-heading">Our Best Sellers</h3>
       </div>
 
       {/* carousel */}
