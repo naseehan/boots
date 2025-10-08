@@ -20,7 +20,7 @@ const MostPopular = () => {
           <div className="each-products" key={product.id}>
             <img src={product.image} alt={product.name} loading="lazy" />
             <div className="product-details">
-              <h2>{product.name}</h2>
+              <p className="popular-name">{product.name}</p>
               <div>
                 <i className="fa-solid fa-star"></i>
                 <i className="fa-solid fa-star"></i>
@@ -28,7 +28,7 @@ const MostPopular = () => {
                 <i className="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star-half"></i>
               </div>
-              <p style={{ textTransform: "uppercase" }}>{product.category}</p>
+              <p style={{ textTransform: "uppercase" }} className="category-name">{product.category}</p>
               <p style={{ fontSize: "18px", fontWeight: 500 }}>
                 INR : ₹ {product.price}
               </p>

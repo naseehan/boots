@@ -45,9 +45,15 @@ function ProductCarousel() {
                 </h3>
                 <p className={styles.productCategory} style={{textTransform: "capitalize"}}>{product.category}</p>
                 <p className={styles.productPrice}>RS. {product.price}</p>
-                <button onClick={() => handleClick(product.slug)}>
+                {/* <button onClick={() => handleClick(product.slug)}>
                   view more
-                </button>
+                </button> */}
+<button className={styles.learnMore}>
+  <span className={styles.circle} aria-hidden="true">
+  <span className={`${styles.icon} ${styles.arrow}`}></span>
+  </span>
+  <span className={styles.buttonText}>More Details</span>
+</button>
               </div>
             </div>
           </Carousel.Slide>

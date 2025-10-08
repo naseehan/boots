@@ -13,7 +13,21 @@
   box-shadow: 12px 12px 0 #000;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.each-products:hover{
+.each-products .popular-name {
+  font-size: 28px;
+  font-weight: 600;
+}
+.each-products .category-name {
+  text-transform: uppercase;
+  background-color: #ff1212;
+  text-align: center;
+  width: 7rem;
+  margin: 0 auto;
+  border-radius: 5px;
+  color: #fff;
+  padding: 3px;
+}
+.each-products:hover {
   transform: translate(-5px, -5px);
   box-shadow: 17px 17px 0 #000;
 }
@@ -27,15 +41,15 @@
   display: grid;
   gap: 1rem;
 }
-.popular-button{
+.popular-button {
   border: 3px solid #000;
-    background: #000;
-    color: #fff;
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {
