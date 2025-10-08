@@ -2,7 +2,6 @@ nav a img {
   height: 76px;
 }
 nav {
-  /* background-color: #1b261b; */
   object-fit: cover;
   background-size: cover;
   background-position: 50%;
@@ -12,22 +11,43 @@ nav {
   align-items: center;
   gap: 1rem;
 }
+.navbar-scroll-style .div-own-styles ul li a, .navbar-for-other-pages .div-own-styles ul li a {
+  color: #000 !important;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: capitalize;
+}
 .navbar-own-styles li a {
-  color: #fff !important;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: capitalize;
 }
 .div-own-styles {
   justify-content: flex-end;
   /* background-color: #000; */
 }
-/* .bgColor{
-  background-color: #000;
-} */
 
-.navbar-scroll-style {
-  background-color: #000;
-  transition: background-color 0.3s ease;
+.navbar-scroll-style, .navbar-for-other-pages {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1); /* transparent layer */
+  backdrop-filter: blur(10px);           /* glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
-
+.navbar-scroll-style .div-own-styles ul li a{
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: capitalize;
+}
 /* <reset-style> ============================ */
 button {
   border: none;
@@ -119,8 +139,12 @@ button:focus {
 }
 
 @media (max-width: 991.50px) {
-  .show,
-  .collapsing {
-    background-color: #000;
-  }
+.show{
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1); /* transparent layer */
+  backdrop-filter: blur(10px);           /* glass effect */
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+  color: white;
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+}
 }

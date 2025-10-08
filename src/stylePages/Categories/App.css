@@ -18,8 +18,6 @@
   user-select: none;
   font-weight: bolder;
   color: black;
-
-  /* box-shadow: 5px 5px 8px 0px rgba(212, 205, 212, 0.63); */
   display: grid;
   gap: 4%;
   padding: 5%;
@@ -28,13 +26,13 @@
   flex: 1;
   min-width: 16rem;
 }
-.each-cates:hover {
-  border: 1px solid black;
-  transform: scale(1.05);
-}
 .each-cates img {
+  transition: all 0.5s;
   width: 100%;
   height: 15rem;
   border-radius: 4px;
   object-fit: cover;
+}
+.each-cates img:hover {
+  transform: scale(1.05);
 }

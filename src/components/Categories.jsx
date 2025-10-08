@@ -21,7 +21,7 @@ const handleClick = () => {
           return (
             <div className="each-cates" key={index} onClick={() => handleClick(data.name)}>
               <img src={data.img} alt="categories" loading="lazy" />
-              <p style={{ textTransform: "capitalize" }}>{data.name}</p>
+              <h3 style={{ textTransform: "capitalize" }}>{data.name}</h3>
             </div>
           );
         })}

@@ -29,8 +29,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={"navbar navbar-expand-lg navbar-light fixed-top"}
-      style={{backgroundColor: '#000'}}
+      className="navbar navbar-expand-lg navbar-light fixed-top navbar-for-other-pages"
     >
       <Link to="/">
         <img

@@ -2,7 +2,7 @@
 
  const cates = [
     {
-        img: '/categories/cate-racquets.webp',
+        img: '/categories/cate-racquets.jpg',
         name: "racquets"
 
     },

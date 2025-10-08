@@ -35,7 +35,7 @@ const HomeNavbar = () => {
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-light fixed-top
-  ${current > 799 ? "navbar-scroll-style" : ""} 
+  ${current > 799 ? "navbar-scroll-style" : "style-for-mobile"} 
      `}
     >
       <Link to="/">
