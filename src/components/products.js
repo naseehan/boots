@@ -34,7 +34,7 @@ const products = {
       id: 4,
       name: "Strike 1912",
       slug: "Strike-1912",
-      image: "/strike-1912-tennis1.jpg",
+      image: "/strike-1912-tennis.jpg",
       rating: 4.8,
       category: "tennis",
       price: 1999,
