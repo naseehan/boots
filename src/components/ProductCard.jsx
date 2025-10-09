@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { style } from "motion/react-client";
 
 const Button = styled.button`
-  border: 2px solid #000;
   padding: 0.6rem 0.75rem;
   margin-top: auto;
   &:hover {
@@ -18,6 +17,9 @@ const CardBody = styled.div`
   display: grid;
   gap: 1.4rem;
   padding: 1.3rem;
+  box-shadow: var(--shadow-s);
+  background-color: var(--bg-light);
+  height: 18rem;
 `;
 const ProductBody = styled.div`
   width: 20rem;
@@ -31,14 +33,16 @@ const ProductBody = styled.div`
   }
 `;
 
-const Text = styled.h5`
+const Text = styled.p`
   font-weight: 700;
+  font-family: 'Afacad Flux', sans-serif;
+  font-size: 26px;
 `;
 const Desc = styled.p`
 display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow: clip;
 `;
 const Select = styled.select`
   &:focus-visible {
@@ -165,7 +169,7 @@ function Card2() {
                   }}
                 />
               </div>
-              <CardBody className="card-body text-dark">
+              <CardBody className="">
                 <div className="d-flex justify-content-between mb-2">
                   <Text
                     className="card-title mb-0 fw-bold"
@@ -184,8 +188,12 @@ function Card2() {
                 <Button
                   className="btn w-100 "
                   style={{
-                    backgroundColor: "white",
+                    backgroundColor: "#858585",
+                    fontWeight: "700",
+                    fontSize: "18px",
                     transition: "background 0.3s ease",
+                    color: "#fff",
+                    boxShadow: "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset"
                   }}
                   onClick={() => handleClick(data.slug)}
                 >

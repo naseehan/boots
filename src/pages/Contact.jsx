@@ -62,8 +62,9 @@ const Contact = () => {
           <ContactIcon className="fa-solid fa-location-dot fa-2xl"></ContactIcon>
           <button onClick={() =>
     window.open(
-      "https://www.google.com/maps?q=8.7637775,76.7927009", "_blank"
+      "https://www.google.com/maps?q=8.763724781573522, 76.79233498368549", "_blank"
     )
+    
   }>Find Our Store</button>
         </ContactItem>
 
