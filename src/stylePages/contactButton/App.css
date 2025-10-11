@@ -3,6 +3,8 @@
   border: none;
   background: none;
   cursor: pointer;
+  width: 201px;
+  margin: 0 auto;
 }
 
 .cta span {
