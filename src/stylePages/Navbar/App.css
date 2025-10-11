@@ -6,6 +6,9 @@ nav {
   background-size: cover;
   background-position: 50%;
 }
+.nav-link:hover{
+  color: #ffa500 !important;
+}
 .navbar-own-styles {
   display: flex;
   align-items: center;
