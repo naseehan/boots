@@ -26,23 +26,27 @@ const ProductBody = styled.div`
   border-radius: 1rem;
   transition: all 0.3s;
   box-shadow: 0 0 #0000, 0 0 #000, 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  0 4px 6px -4px rgb(0 0 0 / 0.1);
   background-color: rgb(255 255 255 / 1);
-  &:hover{
-  transform: translateY(-0.5rem);
+
+  img {
+    transition: all 0.3s;
+  }
+  &:hover img {
+    transform: scale(1.1);
   }
 `;
 
 const Text = styled.p`
   font-weight: 700;
-  font-family: 'Afacad Flux', sans-serif;
+  font-family: "Afacad Flux", sans-serif;
   font-size: 26px;
 `;
 const Desc = styled.p`
-display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: clip;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: clip;
 `;
 const Select = styled.select`
   &:focus-visible {
@@ -155,7 +159,7 @@ function Card2() {
 
         <div className="container-fluid  d-flex flex-wrap gap-4 justify-content-center my-5 ">
           {currentItems.map((data) => (
-            <ProductBody key={data.id} className="card shadow-sm">
+            <ProductBody key={data.id} className="">
               <div className="position-relative" style={{ height: "14rem" }}>
                 <img
                   loading="lazy"
@@ -166,6 +170,7 @@ function Card2() {
                     height: "100%",
                     borderTopLeftRadius: "1rem",
                     borderTopRightRadius: "1rem",
+                    padding: data.padding ? "20px" : "0",
                   }}
                 />
               </div>
@@ -193,7 +198,8 @@ function Card2() {
                     fontSize: "18px",
                     transition: "background 0.3s ease",
                     color: "#fff",
-                    boxShadow: "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset"
+                    boxShadow:
+                      "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset",
                   }}
                   onClick={() => handleClick(data.slug)}
                 >
