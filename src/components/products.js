@@ -85,7 +85,7 @@ const products = {
       desc: "Stability running shoes designed for controlled motion and reliable comfort.",
     },
   ],
-  balls: [
+  sportsBalls: [
     {
       id: 9,
       name: "Nivia Football",
@@ -95,6 +95,7 @@ const products = {
       category: "football",
       price: 999,
       desc: "Suitable For: All Conditions | Ideal For: Training/Match",
+      padding: true
     },
      {
       id: 10,
@@ -105,6 +106,7 @@ const products = {
       category: "football",
       price: 1999,
       desc: "Suitable For: All Conditions | Ideal For: Training/Match",
+      padding: true
     },
      {
       id: 11,
@@ -115,6 +117,7 @@ const products = {
       category: "football",
       price: 975,
       desc: "32 panel stitched construction. Proudly made in India for Rough and Extreme palying conditions.",
+      padding: true
     },
     {
       id: 12,
@@ -125,9 +128,10 @@ const products = {
       category: "basketball",
       price: 695,
       desc: "14 panel Moulded construction, Soft rubberized moulded material",
+      padding: true
     },
   ],
-  boardgames: [
+  boardGames: [
      {
       id: 13,
       name: "Gisco Deluxe Chess Board",

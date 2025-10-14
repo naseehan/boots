@@ -7,8 +7,8 @@ const Categories = () => {
 
 const navigate = useNavigate()
 
-const handleClick = () => {
-  navigate("/products")
+const handleClick = (categoryName) => {
+  navigate("/products", {state: {category: categoryName}});
 }
 
   return (
@@ -19,7 +19,7 @@ const handleClick = () => {
       <div className="cates mts">
         {data.map((data, index) => {
           return (
-            <div className="each-cates" key={index} onClick={() => handleClick(data.name)}>
+            <div className="each-cates" key={index} onClick={() => handleClick(data.category)}>
               <img src={data.img} alt="categories" loading="lazy" />
               <h3 style={{ textTransform: "capitalize" }}>{data.name}</h3>
             </div>

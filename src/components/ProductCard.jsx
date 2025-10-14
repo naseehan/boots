@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import products from "./products";
 import "../stylePages/productCard/App.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { style } from "motion/react-client";
 
 const Button = styled.button`
@@ -33,7 +33,7 @@ const ProductBody = styled.div`
     transition: all 0.3s;
   }
   &:hover img {
-    transform: scale(1.1);
+    transform: scale(1.3);
   }
 `;
 
@@ -53,8 +53,11 @@ const Select = styled.select`
     outline: none;
   }
 `;
+
 function Card2() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const initialCategory = location.state?.category || "";
 
   const handleClick = (slug) => {
     navigate(`/products/${slug}`);
@@ -62,7 +65,7 @@ function Card2() {
 
   // for sorting by price and category
   const [sortValue, setSortValue] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(initialCategory);
 
   const handleCategoryChange = (cat) => {
     setCategory(cat);
@@ -130,10 +133,10 @@ function Card2() {
             <button onClick={() => handleCategoryChange("shoes")}>
               <span class="button_top"> Shoes </span>
             </button>
-            <button onClick={() => handleCategoryChange("balls")}>
+            <button onClick={() => handleCategoryChange("sportsBalls")}>
               <span class="button_top"> Sports Balls </span>
             </button>
-            <button onClick={() => handleCategoryChange("boardgames")}>
+            <button onClick={() => handleCategoryChange("boardGames")}>
               <span class="button_top"> Board Games </span>
             </button>
             <button onClick={() => handleCategoryChange("racquets")}>
@@ -170,7 +173,7 @@ function Card2() {
                     height: "100%",
                     borderTopLeftRadius: "1rem",
                     borderTopRightRadius: "1rem",
-                    padding: data.padding ? "20px" : "0",
+                    padding: data.padding ? "35px" : "0",
                   }}
                 />
               </div>
