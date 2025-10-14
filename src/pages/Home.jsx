@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import homeImg from "../assets/home-img.webp";
+import homeImg from "../assets/home-img1.webp";
 import "../stylePages/Home/App.css";
 import Categories from "../components/Categories";
 import BestSeller from "../components/BestSeller";
 import ChooseUs from "../components/ChooseUs";
 import InfiniteCarousel from "../components/InfiniteCarousel";
 import MostPopular from "../components/MostPopular";
-import homeBg from "../assets/heroBg.webp";
+import homeBg from "../assets/heroBg1.webp";
 import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
 
@@ -20,6 +20,7 @@ const Home = () => {
           src={homeBg}
           alt="home background"
           className="home-bg"
+          height="866px"
         />
         <div className="homeOverlay"></div>
         {/* <div className="home"> */}

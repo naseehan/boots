@@ -1,6 +1,6 @@
 import React from "react";
-import main1 from "../assets/main1.jpg";
-import main2 from "../assets/main2.jpg";
+import main1 from "../assets/main.webp";
+import main2 from "../assets/main2.webp";
 import "../stylePages/chooseUs/App.css";
 import { Link } from "react-router-dom";
 const ChooseUs = () => {

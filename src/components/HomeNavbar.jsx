@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../stylePages/Navbar/App.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 const HomeNavbar = () => {
   const [current, setCurrent] = useState();
