@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import products from "./products";
 import "../stylePages/productCard/App.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { style } from "motion/react-client";
 
 const Button = styled.button`
   padding: 0.6rem 0.75rem;
@@ -26,7 +25,7 @@ const ProductBody = styled.div`
   border-radius: 1rem;
   transition: all 0.3s;
   box-shadow: 0 0 #0000, 0 0 #000, 0 10px 15px -3px rgb(0 0 0 / 0.1),
-  0 4px 6px -4px rgb(0 0 0 / 0.1);
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
   background-color: rgb(255 255 255 / 1);
 
   img {
@@ -84,11 +83,14 @@ function Card2() {
       ? products[category]
       : Object.values(products).flat();
 
-  let sortedItems = [...selectedProducts].sort((a, b) => {
-    if (sortValue === "low-high") return a.price - b.price;
-    if (sortValue === "high-low") return b.price - a.price;
-    return 0;
-  });
+  const sortedItems = useMemo(() => {
+    const items = [...selectedProducts];
+    if (sortValue === "low-high")
+      return items.sort((a, b) => a.price - b.price);
+    if (sortValue === "high-low")
+      return items.sort((a, b) => b.price - a.price);
+    return items;
+  }, [selectedProducts, sortValue]);
 
   // for pagination
   const totalProducts = sortedItems.length;
@@ -99,9 +101,11 @@ function Card2() {
   const totalPage = Math.ceil(totalProducts / perPage);
   const pageNumber = Array.from({ length: totalPage }, (_, i) => i + 1);
 
-  const offset = (currentPage - 1) * perPage;
-
-  const currentItems = sortedItems.slice(offset, offset + perPage);
+  
+  const currentItems = useMemo(() => {
+    const offset = (currentPage - 1) * perPage;
+    return sortedItems.slice(offset, offset + perPage);
+  }, [sortedItems, currentPage]);
 
   const handlePrevious = () => {
     if (currentPage > 1) {
@@ -128,19 +132,19 @@ function Card2() {
           </p>
           <div className="d-flex gap-3 flex-wrap mx-3 cate-nav-buttons">
             <button onClick={() => handleCategoryChange("")}>
-              <span class="button_top"> All Products </span>
+              <span className="button_top"> All Products </span>
             </button>
             <button onClick={() => handleCategoryChange("shoes")}>
-              <span class="button_top"> Shoes </span>
+              <span className="button_top"> Shoes </span>
             </button>
             <button onClick={() => handleCategoryChange("sportsBalls")}>
-              <span class="button_top"> Sports Balls </span>
+              <span className="button_top"> Sports Balls </span>
             </button>
             <button onClick={() => handleCategoryChange("boardGames")}>
-              <span class="button_top"> Board Games </span>
+              <span className="button_top"> Board Games </span>
             </button>
             <button onClick={() => handleCategoryChange("racquets")}>
-              <span class="button_top"> Racquet </span>
+              <span className="button_top"> Racquet </span>
             </button>
           </div>
           <div>
