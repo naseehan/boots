@@ -26,10 +26,10 @@ const Home = () => {
         />
         <div className="homeOverlay"></div>
         {/* <div className="home"> */}
-        <div className="main-image" data-aos="fade-right">
+        <div className="main-image" data-aos="fade-right" data-aos-delay="500">
           <img src={homeImg} alt="home image"  />
         </div>
-        <div className="main-details" data-aos="fade-left">
+        <div className="main-details" data-aos="fade-left" data-aos-delay="500">
           <div className="inside-div">
             <h1 style={{ color: "#ffb658", "font-size": "3rem" }}>
               SIGNATURE SPORTS
