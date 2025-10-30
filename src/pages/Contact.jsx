@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const ContactContainer = styled.div`
@@ -55,7 +54,7 @@ const Contact = () => {
         <ContactItem>
           <ContactIcon className="fa-solid fa-envelope fa-2xl"></ContactIcon>
           <p>Email us</p>
-          <p>We'll reply within five business days</p>
+          <p>We&apos;ll reply within five business days</p>
         </ContactItem>
 
         <ContactItem>

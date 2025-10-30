@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import homeImg from "../assets/home-img1.webp";
 import "../stylePages/Home/App.css";
 import Categories from "../components/Categories";
@@ -7,11 +7,13 @@ import ChooseUs from "../components/ChooseUs";
 import InfiniteCarousel from "../components/InfiniteCarousel";
 import MostPopular from "../components/MostPopular";
 import homeBg from "../assets/heroBg1.webp";
-import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
 
 const Home = () => {
 
+  <script>
+  AOS.init();
+</script>
 
   return (
     <>
@@ -24,10 +26,10 @@ const Home = () => {
         />
         <div className="homeOverlay"></div>
         {/* <div className="home"> */}
-        <div className="main-image">
+        <div className="main-image" data-aos="fade-right">
           <img src={homeImg} alt="home image"  />
         </div>
-        <div className="main-details">
+        <div className="main-details" data-aos="fade-left">
           <div className="inside-div">
             <h1 style={{ color: "#ffb658", "font-size": "3rem" }}>
               SIGNATURE SPORTS
@@ -36,7 +38,7 @@ const Home = () => {
             <p>
               Browse our latest collectins and find the perfect equipments for
               your sports life. With a variety of designs, size and colors.
-              there's something for everyone{" "}
+              there&apos;s something for everyone
             </p>
             <Link to="/products"><button className="fancyBtn">View Collections</button></Link>
             
