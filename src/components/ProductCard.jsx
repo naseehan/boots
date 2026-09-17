@@ -1,253 +1,206 @@
-import React, { useMemo, useState } from "react";
-import styled from "styled-components";
+import { useMemo, useState, useEffect } from "react";
 import products from "./products";
 import "../stylePages/productCard/App.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Button = styled.button`
-  padding: 0.6rem 0.75rem;
-  margin-top: auto;
-  &:hover {
-    color: #fff;
-    background: linear-gradient(to right, #3e5068, #0c1970);
-  }
-`;
-const CardBody = styled.div`
-  display: grid;
-  gap: 1.4rem;
-  padding: 1.3rem;
-  box-shadow: var(--shadow-s);
-  background-color: var(--bg-light);
-  height: 18rem;
-`;
-const ProductBody = styled.div`
-  width: 20rem;
-  border-radius: 1rem;
-  transition: all 0.3s;
-  box-shadow: 0 0 #0000, 0 0 #000, 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  background-color: rgb(255 255 255 / 1);
+const categoriesList = [
+  { id: "", label: "All Products" },
+  { id: "shoes", label: "Footwear" },
+  { id: "sportsBalls", label: "Sports Balls" },
+  { id: "racquets", label: "Racquets" },
+  { id: "boardGames", label: "Board Games" },
+];
 
-  img {
-    transition: all 0.3s;
-  }
-  &:hover img {
-    transform: scale(1.3);
-  }
-`;
-
-const Text = styled.p`
-  font-weight: 700;
-  font-family: "Afacad Flux", sans-serif;
-  font-size: 26px;
-`;
-const Desc = styled.p`
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: clip;
-`;
-const Select = styled.select`
-  &:focus-visible {
-    outline: none;
-  }
-`;
-
-function Card2() {
+function ProductCard() {
   const navigate = useNavigate();
   const location = useLocation();
-  const initialCategory = location.state?.category || "";
+  const [category, setCategory] = useState(location.state?.category || "");
+  const [sortValue, setSortValue] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const perPage = 8;
+
+  useEffect(() => {
+    if (location.state?.category !== undefined) {
+      setCategory(location.state.category);
+      setCurrentPage(1);
+    }
+  }, [location.state]);
 
   const handleClick = (slug) => {
     navigate(`/products/${slug}`);
   };
 
-  // for sorting by price and category
-  const [sortValue, setSortValue] = useState("");
-  const [category, setCategory] = useState(initialCategory);
-
-  const handleCategoryChange = (cat) => {
-    setCategory(cat);
-    setCurrentPage(1); // reset to page 1
+  const handleCategoryChange = (catId) => {
+    setCategory(catId);
+    setCurrentPage(1);
   };
 
-  const handleChange = (e) => {
+  const handleSortChange = (e) => {
     setSortValue(e.target.value);
     setCurrentPage(1);
   };
 
-  // sorting by price && sorting by category
-
-  const selectedProducts =
-    category && products[category]
-      ? products[category]
-      : Object.values(products).flat();
+  const selectedProducts = useMemo(() => {
+    if (category && products[category]) {
+      return products[category];
+    }
+    return Object.values(products).flat();
+  }, [category]);
 
   const sortedItems = useMemo(() => {
     const items = [...selectedProducts];
-    if (sortValue === "low-high")
-      return items.sort((a, b) => a.price - b.price);
-    if (sortValue === "high-low")
-      return items.sort((a, b) => b.price - a.price);
+    if (sortValue === "low-high") return items.sort((a, b) => a.price - b.price);
+    if (sortValue === "high-low") return items.sort((a, b) => b.price - a.price);
     return items;
   }, [selectedProducts, sortValue]);
 
-  // for pagination
   const totalProducts = sortedItems.length;
+  const totalPage = Math.ceil(totalProducts / perPage) || 1;
+  const pageNumbers = Array.from({ length: totalPage }, (_, i) => i + 1);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const perPage = 8;
-
-  const totalPage = Math.ceil(totalProducts / perPage);
-  const pageNumber = Array.from({ length: totalPage }, (_, i) => i + 1);
-
-  
   const currentItems = useMemo(() => {
     const offset = (currentPage - 1) * perPage;
     return sortedItems.slice(offset, offset + perPage);
   }, [sortedItems, currentPage]);
 
   const handlePrevious = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   };
-  // clicking next button
+
   const handleNext = () => {
-    if (currentPage < totalPage) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-  //  clicking page number
-  const handlePageNumberClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    if (currentPage < totalPage) setCurrentPage((prev) => prev + 1);
   };
 
   return (
-    <div>
-      <div className="position-relative d-grid">
-        <div className="d-flex justify-content-around align-items-center category-manuel-styles">
-          <p style={{ color: "#9DB2BF" }}>
-            Showing {currentItems.length} of {totalProducts}
-          </p>
-          <div className="d-flex gap-3 flex-wrap mx-3 cate-nav-buttons">
-            <button onClick={() => handleCategoryChange("")}>
-              <span className="button_top"> All Products </span>
-            </button>
-            <button onClick={() => handleCategoryChange("shoes")}>
-              <span className="button_top"> Shoes </span>
-            </button>
-            <button onClick={() => handleCategoryChange("sportsBalls")}>
-              <span className="button_top"> Sports Balls </span>
-            </button>
-            <button onClick={() => handleCategoryChange("boardGames")}>
-              <span className="button_top"> Board Games </span>
-            </button>
-            <button onClick={() => handleCategoryChange("racquets")}>
-              <span className="button_top"> Racquet </span>
-            </button>
-          </div>
-          <div>
-            <Select
-              name="sort"
-              id="sort"
-              onChange={handleChange}
-              defaultValue=""
-              className="form-select cursor-pointer"
-            >
-              <option value="" disabled hidden>
-                Sort By
-              </option>
-              <option value="high-low">Price : High-Low</option>
-              <option value="low-high">Price : Low-High</option>
-            </Select>
-          </div>
+    <section className="catalog-container common-container" aria-label="Product Catalog">
+      {/* Filters & Sorting Bar */}
+      <div className="catalog-toolbar">
+        <div className="catalog-counter">
+          <span>Showing</span> <strong>{currentItems.length}</strong> of <strong>{totalProducts}</strong> products
         </div>
 
-        <div className="container-fluid  d-flex flex-wrap gap-4 justify-content-center my-5 ">
-          {currentItems.map((data) => (
-            <ProductBody key={data.id} className="">
-              <div className="position-relative" style={{ height: "14rem" }}>
-                <img
-                  loading="lazy"
-                  src={data.image}
-                  className="card-img-top object-fit-contain"
-                  alt="shoes"
-                  style={{
-                    height: "100%",
-                    borderTopLeftRadius: "1rem",
-                    borderTopRightRadius: "1rem",
-                    padding: data.padding ? "35px" : "0",
-                  }}
-                />
-              </div>
-              <CardBody className="">
-                <div className="d-flex justify-content-between mb-2">
-                  <Text
-                    className="card-title mb-0 fw-bold"
-                    style={{ maxWidth: "20ch" }}
-                  >
-                    {data.name}
-                  </Text>
-                  <span
-                    className="fw-semibold"
-                    style={{ fontWeight: 600, fontSize: "1.1rem" }}
-                  >
-                    ₹{data.price}
-                  </span>
-                </div>
-                <Desc className="card-text small text-black">{data.desc}</Desc>
-                <Button
-                  className="btn w-100 "
-                  style={{
-                    backgroundColor: "#858585",
-                    fontWeight: "700",
-                    fontSize: "18px",
-                    transition: "background 0.3s ease",
-                    color: "#fff",
-                    boxShadow:
-                      "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset",
-                  }}
-                  onClick={() => handleClick(data.slug)}
-                >
-                  More Details
-                </Button>
-              </CardBody>
-            </ProductBody>
-          ))}
-        </div>
-
-        {/* pagination */}
-        <div className="pagination">
-          <button
-            className="paginationButton"
-            onClick={handlePrevious}
-            disabled={currentPage === 1}
-          >
-            ⬅️
-          </button>
-          {pageNumber.map((pageNum) => (
+        <div className="catalog-filter-chips" role="tablist" aria-label="Filter products by category">
+          {categoriesList.map((cat) => (
             <button
-              className={`paginationButton ${
-                currentPage === pageNum ? "active " : ""
-              }`}
-              key={pageNum}
-              onClick={() => handlePageNumberClick(pageNum)}
+              key={cat.id}
+              role="tab"
+              aria-selected={category === cat.id}
+              className={`filter-chip ${category === cat.id ? "is-active" : ""}`}
+              onClick={() => handleCategoryChange(cat.id)}
             >
-              {pageNum}
+              {cat.label}
             </button>
           ))}
-          <button
-            className="paginationButton"
-            onClick={handleNext}
-            disabled={currentPage === totalPage}
+        </div>
+
+        <div className="catalog-sort-wrapper">
+          <label htmlFor="product-sort-select" className="visually-hidden">Sort Products</label>
+          <select
+            id="product-sort-select"
+            value={sortValue}
+            onChange={handleSortChange}
+            className="catalog-sort-select"
           >
-            ➡️
-          </button>
+            <option value="">Sort by: Featured</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+          </select>
         </div>
       </div>
-    </div>
+
+      {/* Product Cards Grid */}
+      <div className="catalog-grid">
+        {currentItems.map((item) => (
+          <article className="catalog-card" key={item.id}>
+            <div
+              className="catalog-card-media"
+              onClick={() => handleClick(item.slug)}
+              tabIndex={0}
+              role="button"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleClick(item.slug);
+                }
+              }}
+              aria-label={`View ${item.name}`}
+            >
+              <span className="catalog-badge">{item.category}</span>
+              <img
+                src={item.image}
+                alt={item.name}
+                loading="lazy"
+                width="280"
+                height="220"
+                className={item.padding ? "has-padded-img" : ""}
+              />
+            </div>
+
+            <div className="catalog-card-content">
+              <div className="catalog-card-header">
+                <h2
+                  className="catalog-card-title"
+                  onClick={() => handleClick(item.slug)}
+                  title={item.name}
+                >
+                  {item.name}
+                </h2>
+                <span className="catalog-card-price">₹{item.price.toLocaleString("en-IN")}</span>
+              </div>
+
+              <p className="catalog-card-desc">{item.desc}</p>
+
+              <button
+                className="btn-catalog-details"
+                onClick={() => handleClick(item.slug)}
+                aria-label={`View full details for ${item.name}`}
+              >
+                More Details
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Pagination Controls */}
+      {totalPage > 1 && (
+        <nav className="catalog-pagination" aria-label="Catalog pagination">
+          <button
+            className="pagination-arrow-btn"
+            onClick={handlePrevious}
+            disabled={currentPage === 1}
+            aria-label="Previous page"
+          >
+            &larr; Prev
+          </button>
+
+          <div className="pagination-numbers">
+            {pageNumbers.map((pageNum) => (
+              <button
+                key={pageNum}
+                className={`pagination-num-btn ${currentPage === pageNum ? "is-active" : ""}`}
+                onClick={() => setCurrentPage(pageNum)}
+                aria-current={currentPage === pageNum ? "page" : undefined}
+                aria-label={`Page ${pageNum}`}
+              >
+                {pageNum}
+              </button>
+            ))}
+          </div>
+
+          <button
+            className="pagination-arrow-btn"
+            onClick={handleNext}
+            disabled={currentPage === totalPage}
+            aria-label="Next page"
+          >
+            Next &rarr;
+          </button>
+        </nav>
+      )}
+    </section>
   );
 }
 
-export default Card2;
+export default ProductCard;
+

@@ -1,122 +1,195 @@
-import React, { useEffect } from "react";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
+import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import "../stylePages/bestSeller/App.css";
 import products from "./products";
 
-const animation = { duration: 30000, easing: (t) => t };
-
 const BestSeller = () => {
-  // Keen slider setup
-  const [sliderRef, instanceRef] = useKeenSlider({
-    loop: true,
-    renderMode: "performance",
-    origin: "center",
-    drag: true,
-    slides: {
-      perView: 3,
-      spacing: 80,
-    },
-    breakpoints: {
-      "(max-width: 1024px)": {
-        slides: {
-          perView: 2,
-          spacing: 16,
-        },
-      },
-      "(max-width: 640px)": {
-        slides: {
-          perView: 1,
-          spacing: 10,
-        },
-      },
-    },
-    created(s) {
-      s.moveToIdx(5, true, animation);
-    },
-    updated(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation);
-    },
-    animationEnded(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation);
-    },
-  });
+  const navigate = useNavigate();
+  const trackRef = useRef(null);
+  const groupRef = useRef(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const currentTranslate = useRef(0);
+  const didDrag = useRef(false);
 
-  // Pause on hover
-  React.useEffect(() => {
-    if (!instanceRef.current) return;
-    const sliderEl = instanceRef.current.container;
+  // 12 cards per group (6 unique shoes doubled) guarantees continuous track width on all viewports
+  const cardList = [...products.shoes, ...products.shoes];
 
-    const stop = () => instanceRef.current?.animator.stop();
-    const resume = () =>
-      instanceRef.current?.moveToIdx(
-        instanceRef.current.track.details.abs + 5,
-        true,
-        animation
-      );
+  const getTranslateX = (el) => {
+    if (!el) return 0;
+    const style = window.getComputedStyle(el);
+    const matrix = new DOMMatrixReadOnly(style.transform);
+    return matrix.m41;
+  };
 
-    sliderEl.addEventListener("mouseover", stop);
-    sliderEl.addEventListener("mouseleave", resume);
+  const handlePointerDown = (e) => {
+    if (e.button !== 0 && e.pointerType === "mouse") return;
+    const track = trackRef.current;
+    if (!track) return;
 
-    return () => {
-      sliderEl.removeEventListener("mouseover", stop);
-      sliderEl.removeEventListener("mouseleave", resume);
-    };
-  }, [instanceRef]);
+    isDragging.current = true;
+    didDrag.current = false;
+    startX.current = e.clientX;
+    const currentTx = getTranslateX(track);
+    currentTranslate.current = currentTx;
 
+    track.style.animationPlayState = "paused";
+  };
 
-  let navigate = useNavigate();
-  const handleClick = (slug) => {
-     navigate(`/products/${slug}`);
+  const handlePointerMove = (e) => {
+    if (!isDragging.current) return;
+    const track = trackRef.current;
+    const group = groupRef.current;
+    if (!track || !group) return;
+
+    const deltaX = e.clientX - startX.current;
+    if (Math.abs(deltaX) > 6) {
+      didDrag.current = true;
+    }
+
+    const groupWidth = group.offsetWidth || 1;
+    let newTx = currentTranslate.current + deltaX;
+
+    // Wrap smoothly within [-groupWidth, 0] bounds
+    newTx = ((newTx % groupWidth) - groupWidth) % groupWidth;
+    track.style.animation = "none";
+    track.style.transform = `translateX(${newTx}px)`;
+  };
+
+  const handlePointerUp = () => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const track = trackRef.current;
+    const group = groupRef.current;
+    if (!track || !group) return;
+
+    const groupWidth = group.offsetWidth || 1;
+    let currentTx = getTranslateX(track);
+    currentTx = ((currentTx % groupWidth) - groupWidth) % groupWidth;
+
+    const progress = Math.abs(currentTx) / groupWidth;
+    const duration = window.innerWidth <= 640 ? 36 : 48;
+    const delay = -progress * duration;
+
+    track.style.transform = "";
+    track.style.animation = `bestsellerMarquee ${duration}s linear infinite`;
+    track.style.animationDelay = `${delay}s`;
+    track.style.animationPlayState = "running";
+  };
+
+  const handleCardClick = (slug) => {
+    if (didDrag.current) return;
+    navigate(`/products/${slug}`);
   };
 
   return (
-    <div className="">
-      {/* heading */}
-      <div className="best-seller-heading">
-        <h3 className="h1-heading">Our Best Sellers</h3>
-      </div>
-
-      {/* carousel */}
-      <div ref={sliderRef} className="keen-slider home-slider" id="slider">
-        {products.shoes.map((item) => (
-          <div
-            key={item.id}
-            className="keen-slider__slide number-slide1 group"
-            onClick={() => handleClick(item.slug)}
-          >
-            <div className="keenslider-image-container">
-              <img
-                className=""
-                src={item.image}
-                loading="lazy"
-                alt={item.name}
-              />
-            </div>
-
-            {/* overlay */}
-            <div
-              className="custom-overlay"
-            >
-              <h3>
-                {item.name}
-              </h3>
-              <p>
-                LEARN MORE
-              </p>
-            </div>
+    <section className="bestseller-section" aria-labelledby="bestseller-heading">
+      <div className="common-container">
+        <div className="cate-heading mt">
+          <div>
+            <h2 id="bestseller-heading" className="h1-heading">
+              Our Best Sellers
+            </h2>
+            <p className="section-subtitle">
+              Top trending athletic gear chosen by champions and fitness enthusiasts.
+            </p>
           </div>
-        ))}
+        </div>
       </div>
 
-      {/* button */}
-      <div className="button-container pb-20">
-        <Link to="/products">MORE PRODUCTS</Link>
+      {/* Seamless Continuous Carousel Track */}
+      <div
+        className="bestseller-slider-wrapper"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+      >
+        <div ref={trackRef} className="bestseller-marquee-track">
+          {/* Primary Group */}
+          <div ref={groupRef} className="bestseller-group">
+            {cardList.map((item, index) => (
+              <article
+                key={`best-g1-${item.id}-${index}`}
+                className="bestseller-slide-card"
+                onClick={() => handleCardClick(item.slug)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleCardClick(item.slug);
+                  }
+                }}
+                aria-label={`View ${item.name}`}
+              >
+                <div className="bestseller-slide-img-box">
+                  <img
+                    src={item.image}
+                    loading="eager"
+                    decoding="async"
+                    alt={item.name}
+                    width="360"
+                    height="270"
+                  />
+                </div>
+
+                <div className="bestseller-slide-overlay">
+                  <span className="bestseller-overlay-badge">Best Seller</span>
+                  <h3 className="bestseller-overlay-title">{item.name}</h3>
+                  <span className="bestseller-overlay-price">
+                    ₹{item.price.toLocaleString("en-IN")}
+                  </span>
+                  <span className="bestseller-overlay-cta">View Details &rarr;</span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Duplicate Group for Infinite Loop */}
+          <div className="bestseller-group" aria-hidden="true">
+            {cardList.map((item, index) => (
+              <article
+                key={`best-g2-${item.id}-${index}`}
+                className="bestseller-slide-card"
+                onClick={() => handleCardClick(item.slug)}
+                role="button"
+                tabIndex={-1}
+              >
+                <div className="bestseller-slide-img-box">
+                  <img
+                    src={item.image}
+                    loading="eager"
+                    decoding="async"
+                    alt=""
+                    width="360"
+                    height="270"
+                  />
+                </div>
+
+                <div className="bestseller-slide-overlay">
+                  <span className="bestseller-overlay-badge">Best Seller</span>
+                  <h3 className="bestseller-overlay-title">{item.name}</h3>
+                  <span className="bestseller-overlay-price">
+                    ₹{item.price.toLocaleString("en-IN")}
+                  </span>
+                  <span className="bestseller-overlay-cta">View Details &rarr;</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* Action Button */}
+      <div className="bestseller-btn-row">
+        <Link to="/products" className="btn-athletic btn-athletic-primary">
+          Explore All Products
+        </Link>
+      </div>
+    </section>
   );
 };
 
 export default BestSeller;
+

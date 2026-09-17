@@ -1,132 +1,121 @@
 .productCard {
-  border-radius: 8px;
-  padding: 12px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal),
+              border-color var(--transition-normal);
+  height: 100%;
 }
 
 .productCard:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--brand-amber);
+}
+
+.imageWrapper {
+  background: radial-gradient(circle at center, #f8fafc 0%, #edf2f7 100%);
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .productImage {
-  width: 304px;
-  height: 304px;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
-  border-radius: 6px;
+  transition: transform var(--transition-smooth);
+}
+
+.productCard:hover .productImage {
+  transform: scale(1.1);
 }
 
 .productDetails {
-  margin-bottom: 2rem;
-  display: grid;
-  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.5rem;
 }
 
 .productCategory {
-  color: #666;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-amber-hover);
+}
+
+.productName {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  margin: 0;
+  cursor: pointer;
+  line-height: 1.25;
+  transition: color var(--transition-fast);
+}
+
+.productName:hover {
+  color: var(--brand-amber-hover);
 }
 
 .productPrice {
-  font-weight: 500;
-  color: #000;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.viewDetailsBtn {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.65rem 1rem;
+  background: var(--brand-navy);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.viewDetailsBtn:hover {
+  background: var(--brand-amber);
+  color: var(--brand-navy-dark);
 }
 
 .controls {
-  gap: 0.6rem !important;
-  top: -12% !important;
-  justify-content: end !important;
+  gap: 0.75rem;
 }
 
 .control {
-  background-color: #b7c4cf !important;
-  padding: 1rem !important;
+  background-color: var(--brand-navy) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
 }
 
-/* From Uiverse.io by cssbuttons-io */ 
-button {
- position: relative;
- display: inline-block;
- cursor: pointer;
- outline: none;
- border: 0;
- vertical-align: middle;
- text-decoration: none;
- background: transparent;
- padding: 0;
-}
-
-button.learnMore {
- width: 12rem;
- height: auto;
- margin: 0 auto;
-}
-
-button.learnMore .circle {
- transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
- position: relative;
- display: block;
- margin: 0;
- width: 3rem;
- height: 3rem;
- background: #282936;
- border-radius: 1.625rem;
-}
-
-button.learnMore .circle .icon {
- transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
- position: absolute;
- top: 0;
- bottom: 0;
- margin: auto;
- background: #fff;
-}
-
-button.learnMore .circle .icon.arrow {
- transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
- left: 0.625rem;
- width: 1.125rem;
- height: 0.125rem;
- background: none;
-}
-
-button.learnMore .circle .icon.arrow::before {
- position: absolute;
- content: "";
- top: -0.29rem;
- right: 0.0625rem;
- width: 0.625rem;
- height: 0.625rem;
- border-top: 0.125rem solid #fff;
- border-right: 0.125rem solid #fff;
- transform: rotate(45deg);
-}
-
-button.learnMore .buttonText {
- transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- padding: 0.75rem 0;
- margin: 0 0 0 1.85rem;
- color: #282936;
- font-weight: 700;
- line-height: 1.6;
- text-align: center;
- text-transform: uppercase;
-}
-
-button:hover .circle {
- width: 100%;
-}
-
-button:hover .circle .icon.arrow {
- background: #fff;
- transform: translate(1rem, 0);
-}
-
-button:hover .buttonText {
- color: #fff;
-}
+.control:hover {
+  background-color: var(--brand-amber) !important;
+  color: var(--brand-navy-dark) !important;
+  transform: scale(1.1);
+}

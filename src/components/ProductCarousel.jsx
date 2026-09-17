@@ -8,20 +8,26 @@ function ProductCarousel() {
   const navigate = useNavigate();
 
   const handleClick = (slug) => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     navigate(`/products/${slug}`);
   };
 
   return (
-    <div>
-      <h3 className="mt-5 ms-4"> You Might Also Like </h3>
+    <section className="common-container related-products-section" aria-label="Related Products">
+      <div className="cate-heading mt">
+        <div>
+          <h2 className="h1-heading">You Might Also Like</h2>
+          <p className="section-subtitle">
+            Explore more popular athletic gear from our collection.
+          </p>
+        </div>
+      </div>
+
       <Carousel
-        height={560}
         slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
-        slideGap={{ base: 0, sm: "md" }}
+        slideGap="1.25rem"
         emblaOptions={{ loop: true, align: "start" }}
         style={{ marginBottom: "3rem" }}
-        // to change styles of control button (next, previous) of carousel
         classNames={{
           controls: styles.controls,
           control: styles.control,
@@ -29,36 +35,55 @@ function ProductCarousel() {
       >
         {products.shoes.map((product) => (
           <Carousel.Slide key={product.id}>
-            <div className={styles.productCard}>
-              <img
-                loading="lazy"
-                src={product.image}
-                alt={product.name}
-                className={styles.productImage}
-              />
+            <article className={styles.productCard}>
+              <div
+                className={styles.imageWrapper}
+                onClick={() => handleClick(product.slug)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleClick(product.slug);
+                  }
+                }}
+                aria-label={`View ${product.name}`}
+              >
+                <img
+                  loading="lazy"
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.productImage}
+                  width="260"
+                  height="200"
+                />
+              </div>
 
               <div className={styles.productDetails}>
+                <span className={styles.productCategory}>{product.category}</span>
                 <h3
-                  className={`${styles.productName} color-primary weight-medium`}
+                  className={styles.productName}
+                  onClick={() => handleClick(product.slug)}
                 >
                   {product.name}
                 </h3>
-                <p className={styles.productCategory} style={{textTransform: "capitalize"}}>{product.category}</p>
-                <p className={styles.productPrice}>RS. {product.price}</p>
-              
-<button className={styles.learnMore} onClick={() => handleClick(product.slug)}>
-  <span className={styles.circle} aria-hidden="true">
-  <span className={`${styles.icon} ${styles.arrow}`}></span>
-  </span>
-  <span className={styles.buttonText}>More Details</span>
-</button>
+                <div className={styles.productPrice}>₹{product.price.toLocaleString("en-IN")}</div>
+
+                <button
+                  className={styles.viewDetailsBtn}
+                  onClick={() => handleClick(product.slug)}
+                  aria-label={`View details for ${product.name}`}
+                >
+                  View Details
+                </button>
               </div>
-            </div>
+            </article>
           </Carousel.Slide>
         ))}
       </Carousel>
-    </div>
+    </section>
   );
 }
 
 export default ProductCarousel;
+

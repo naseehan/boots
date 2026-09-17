@@ -1,107 +1,155 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/logo.webp";
+import "../stylePages/Navbar/App.css";
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
+  // Handle scroll state
   useEffect(() => {
-
-  
-    const navLinks = document.querySelectorAll(".nav-link");
-    const collapseElement = document.getElementById("navbarSupportedContent");
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        if (collapseElement.classList.contains("show")) {
-          new bootstrap.Collapse(collapseElement).hide();
-        }
-      });
-    });
-
-    // Cleanup
-    return () => {
-      navLinks.forEach((link) => {
-        link.removeEventListener("click", () => {});
-      });
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
     };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  const navClass = `signature-navbar ${
+    isHome
+      ? isScrolled
+        ? "navbar-scrolled"
+        : "navbar-transparent"
+      : "navbar-solid"
+  }`;
 
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-light fixed-top navbar-for-other-pages"
-    >
-      <Link to="/">
-        <img
-          src={logo}
-          alt="logo"
-          className="navbar-brand"
-          loading="lazy"
-          title="Signature Sports"
-        />
-      </Link>
+    <header className={navClass}>
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+      <div className="navbar-container">
+        <Link to="/" className="navbar-brand-link" aria-label="Signature Sports Home">
+          <img
+            src={logo}
+            alt="Signature Sports Logo"
+            className="navbar-logo"
+            width="140"
+            height="44"
+            loading="eager"
+            fetchPriority="high"
+          />
+        </Link>
 
-      <button
-        className="navbar-toggler menu__icon"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        {/* <span className="navbar-toggler-icon"></span> */}
-      </button>
+        {/* Mobile Hamburger Button */}
+        <button
+          className={`navbar-toggle-btn ${isMenuOpen ? "is-active" : ""}`}
+          type="button"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-controls="primary-navigation"
+        >
+          <span className="toggle-bar"></span>
+          <span className="toggle-bar"></span>
+          <span className="toggle-bar"></span>
+        </button>
 
-      <div
-        className="collapse navbar-collapse div-own-styles"
-        id="navbarSupportedContent"
-      >
-        <ul className="navbar-nav  navbar-own-styles">
-          <li className="nav-item active">
-            <Link
-              to="/"
-              className="nav-link"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-            >
-              Home
-            </Link>
-          </li>
-          <li className="nav-item active">
+        {/* Navigation Links */}
+        <nav
+          id="primary-navigation"
+          className={`navbar-menu ${isMenuOpen ? "is-open" : ""}`}
+          aria-label="Main Navigation"
+        >
+          <ul className="navbar-nav-list">
+            <li className="navbar-nav-item">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `nav-link-item ${isActive ? "active" : ""}`
+                }
+                end
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="navbar-nav-item">
+              <NavLink
+                to="/products"
+                className={({ isActive }) =>
+                  `nav-link-item ${isActive ? "active" : ""}`
+                }
+              >
+                Products
+              </NavLink>
+            </li>
+            <li className="navbar-nav-item">
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `nav-link-item ${isActive ? "active" : ""}`
+                }
+              >
+                About
+              </NavLink>
+            </li>
+            <li className="navbar-nav-item">
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `nav-link-item ${isActive ? "active" : ""}`
+                }
+              >
+                Contact Us
+              </NavLink>
+            </li>
+          </ul>
+
+          <div className="navbar-cta-wrapper">
             <Link
               to="/products"
-              className="nav-link"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
+              className="navbar-cta-btn"
+              onClick={() => setIsMenuOpen(false)}
             >
-              Products
+              Shop Now
             </Link>
-          </li>
-          <li className="nav-item active">
-            <Link
-              to="/about"
-              className="nav-link"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-            >
-              About
-            </Link>
-          </li>
-          <li className="nav-item active">
-            <Link
-              to="/contact"
-              className="nav-link"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-            >
-              Contact US
-            </Link>
-          </li>
-        </ul>
+          </div>
+        </nav>
       </div>
-    </nav>
+
+      {/* Backdrop overlay for mobile menu */}
+      {isMenuOpen && (
+        <div
+          className="navbar-backdrop"
+          onClick={() => setIsMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+    </header>
   );
 };
 
 export default Navbar;
+

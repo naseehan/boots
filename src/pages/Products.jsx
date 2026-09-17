@@ -1,30 +1,17 @@
-import React from "react";
 import ProductCard from "../components/ProductCard";
-import styled from "styled-components";
-
-const Text = styled.p`
-  font-size: 1.25rem;
-  line-height: 1.625;
-  color: rgb(71 85 105 / 1);
-  max-width: 42rem;
-  margin: 2rem auto;
-`;
 
 const Products = () => {
   return (
-    <div className="product-container">
-      <div className="text-center mx-auto my-5">
-        <p>Our Products</p>
-        <h1
-          className="fw-bold"
-          style={{ fontFamily: "Edu QLD Hand, cursive", fontSize: "4rem" }}
-        >
-          Greatness awaits you
+    <div className="products-page-container">
+      <div className="common-container text-center py-4">
+        <span className="badge-sports mb-2">Signature Sports Catalog</span>
+        <h1 className="h1-heading mt-2">
+          Gear Built For Champions
         </h1>
-        <Text>
-          Discover our curated selection of high-performance athletic shoes
-          designed for champions
-        </Text>
+        <p className="section-subtitle mx-auto">
+          Discover our curated selection of high-performance footwear, sports balls,
+          racquets, and indoor games crafted to maximize your athletic potential.
+        </p>
       </div>
       <ProductCard />
     </div>
@@ -32,3 +19,4 @@ const Products = () => {
 };
 
 export default Products;
+

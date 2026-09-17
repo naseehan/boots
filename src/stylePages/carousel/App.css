@@ -1,60 +1,114 @@
-@keyframes slides {
+.brands-carousel-section {
+  padding: 3rem 0;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+.brands-marquee-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.logos-marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  user-select: none;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeScroll 56s linear infinite;
+}
+
+.logos-marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: max-content;
+  gap: 4rem;
+  padding-right: 4rem;
+  box-sizing: border-box;
+}
+
+.brand-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 56px;
+  flex-shrink: 0;
+  filter: grayscale(100%) opacity(0.65);
+  transition: filter var(--transition-normal), transform var(--transition-normal);
+}
+
+.brand-logo-item:hover {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.08);
+}
+
+.brand-logo-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@keyframes marqueeScroll {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
-.logos {
-  overflow: hidden;
-  padding: 30px 0px;
-  white-space: nowrap;
-  position: relative;
+@media (max-width: 768px) {
+  .marquee-track {
+    animation-duration: 40s;
+  }
+
+  .marquee-group {
+    gap: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .brand-logo-item {
+    width: 100px;
+    height: 44px;
+  }
 }
 
-.logos:before,
-.logos:after {
-  position: absolute;
-  top: 0;
-  content: "";
-  width: 250px;
-  height: 100%;
-  z-index: 2;
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-play-state: paused;
+  }
 }
 
-.logos:before {
-  left: 0;
-  background: linear-gradient(
-    to left,
-    rgba(255, 255, 255, 0),
-    rgb(255, 255, 255)
-  );
-}
-
-.logos:after {
-  right: 0;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    rgb(255, 255, 255)
-  );
-}
-
-.logo_items {
-  display: flex;
-  gap: 5rem;
-  animation: 35s slides infinite linear;
-}
-
-.logos:hover .logo_items {
-  animation-play-state: paused;
-}
-
-.logo_items img {
-  height: 100px;
-  width: 15%;
-  aspect-ratio: 3 / 2;
-  object-fit: contain;
-}

@@ -2,70 +2,94 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="src/assets/logo.png" />
+    <link rel="icon" type="image/webp" href="/logo.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c1970" />
 
-<!-- Google no longer uses this tag for ranking -->
-    <meta
-      name="keywords"
-      content="Signature Sports, Signature Sports Kallambalam, sports store Kerala, cricket shoes Kallambalam"
-    />
-    <meta name="author" content="Naseeh A.N." />
+    <title>Signature Sports | Premium Sports Gear in Kallambalam</title>
     <meta
       name="description"
-      content="Signature Sports is your trusted sports store in Kallambalam offering quality sports gear, shoes, balls, and equipment for all games."
+      content="Signature Sports is Kallambalam's premier sports store offering top-quality football boots, athletic shoes, sports balls, racquets, board games, and fitness gear."
     />
+    <meta
+      name="keywords"
+      content="Signature Sports, Signature Sports Kallambalam, sports store Kerala, football boots Kallambalam, badminton racquets, sports shop Kallambalam"
+    />
+    <meta name="author" content="Signature Sports" />
+    <link rel="canonical" href="https://signature-sports.onrender.com/" />
 
     <!-- Open Graph for social sharing -->
-<meta property="og:title" content="Signature Sports | Kallambalam's Favorite Sports Store">
-<meta property="og:description" content="Visit Signature Sports in Kallambalam for high-quality sports gear, balls, shoes, and more.">
-<!-- <meta property="og:image" content="https://yourwebsite.com/path-to-logo.jpg"> -->
-<meta property="og:url" content="https://signature-sports.onrender.com/">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Signature Sports | Kallambalam's Premier Sports Store" />
+    <meta property="og:description" content="Discover premium sports gear, athletic shoes, footballs, racquets, and accessories at Signature Sports in Kallambalam." />
+    <meta property="og:image" content="https://signature-sports.onrender.com/logo.webp" />
+    <meta property="og:url" content="https://signature-sports.onrender.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Structured Data (JSON-LD) for Local Business / Sports Store -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportingGoodsStore",
+        "name": "Signature Sports",
+        "image": "https://signature-sports.onrender.com/logo.webp",
+        "url": "https://signature-sports.onrender.com/",
+        "telephone": "+917034546546",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kallambalam",
+          "addressRegion": "Kerala",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 8.763725,
+          "longitude": 76.792335
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        "priceRange": "₹₹"
+      }
+    </script>
 
-<!-- google fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Afacad:ital,wght@0,400..700;1,400..700&family=Edu+QLD+Hand:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
+    <!-- Google Fonts: Inter (UI/Body) & Kanit + Oswald (Sports Headings) with display=swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kanit:wght@600;700;800&family=Oswald:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
-
-    <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
-
-    <!-- animate on scroll -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-    <title>Signature Sports</title>
   </head>
   <body>
     <div id="root"></div>
 
-    <!-- fontawesome -->
+    <!-- FontAwesome -->
     <script
       src="https://kit.fontawesome.com/5141f92ced.js"
       crossorigin="anonymous"
+      defer
     ></script>
-    <!-- bootstrap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <!-- animate on scroll -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

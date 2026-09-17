@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-// import './scrambleText.css'
+import { useEffect, useRef, useState } from 'react';
+
 class TextScramble {
   constructor(el) {
     this.el = el;
@@ -57,45 +57,36 @@ class TextScramble {
   }
 }
 
+const phrases = [
+  'shoes',
+  'jersey',
+  'sports balls',
+  'board games',
+  'badminton rackets.',
+];
+
 const ScrambleText = () => {
-    
-
-
-  const phrases = [
-    'shoes',
-    
-    'jersey',
-    'sports balls',
-    'board games',
-    'badminton rackets.',
-    
-  ];
-
   const elRef = useRef(null);
   const [counter, setCounter] = useState(0);
 
-useEffect(() => {
-  if (elRef.current && counter < phrases.length) {
-    const fx = new TextScramble(elRef.current);
+  useEffect(() => {
+    if (elRef.current && counter < phrases.length) {
+      const fx = new TextScramble(elRef.current);
 
-    fx.setText(phrases[counter]).then(() => {
-      setTimeout(() => {
-        setCounter((prev) => prev + 1);
-      }, 2000); 
-    });
+      fx.setText(phrases[counter]).then(() => {
+        setTimeout(() => {
+          setCounter((prev) => (prev + 1) % phrases.length);
+        }, 2000);
+      });
 
-    return () => {
-      cancelAnimationFrame(fx.frameRequest);
-    };
-  }
-}, [counter]);
+      return () => {
+        cancelAnimationFrame(fx.frameRequest);
+      };
+    }
+  }, [counter]);
 
-
-  return (
-  <div ref={elRef}></div>
-  
-  )
- 
+  return <div ref={elRef}></div>;
 };
 
 export default ScrambleText;
+
