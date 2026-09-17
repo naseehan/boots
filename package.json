@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mantine/carousel": "^8.1.1",
+    "aos": "^2.3.4",
     "depcheck": "^1.4.7",
     "embla-carousel": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
