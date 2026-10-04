@@ -15,7 +15,7 @@ const products = {
       id: 2,
       name: "Sega Winner",
       slug: "sega-winner",
-      image: "/sega-winner1.png",
+      image: "/sega-winner1.webp",
       rating: 4.1,
       category: "basketball",
       price: 680,
@@ -37,7 +37,7 @@ const products = {
       id: 4,
       name: "Strike 1912",
       slug: "Strike-1912",
-      image: "/strike-1912-tennis1.png",
+      image: "/strike-1912-tennis1.webp",
       rating: 4.8,
       category: "tennis",
       price: 1999,
@@ -58,7 +58,7 @@ const products = {
       id: 6,
       name: "Puma 22 FH",
       slug: "puma-22-fh",
-      image: "/puma-cricket1.png",
+      image: "/puma-cricket1.webp",
       rating: 4.6,
       category: "running",
       price: 4549.0,
@@ -97,7 +97,7 @@ const products = {
       desc: "Suitable For: All Conditions | Ideal For: Training/Match",
       padding: true
     },
-     {
+    {
       id: 10,
       name: "Nike Football",
       slug: "nike-football",
@@ -108,7 +108,7 @@ const products = {
       desc: "Suitable For: All Conditions | Ideal For: Training/Match",
       padding: true
     },
-     {
+    {
       id: 11,
       name: "Nivia Shinigstar",
       slug: "nivia-shinigstar",
@@ -132,7 +132,7 @@ const products = {
     },
   ],
   boardGames: [
-     {
+    {
       id: 13,
       name: "Gisco Deluxe Chess Board",
       slug: "gisco-deluxe-chess-board",
@@ -153,8 +153,8 @@ const products = {
       desc: "Plain box packing. With wooden magnetic coin 2.2'. 9'- 9x4.5x1.5 Inches.  12'-12x6x1.5 Inches"
     },
   ],
-   racquets:[
-       {
+  racquets: [
+    {
       id: 15,
       name: "Yonex Astrox Attack 9",
       slug: "yonex-astrox-attack-9",
@@ -165,7 +165,7 @@ const products = {
       desc: "Joint: Built-in T Joint , Head Shape: Isometric , Material: Graphite , Cover: Full Cover",
       padding: true
     },
-     {
+    {
       id: 16,
       name: "Li-Ning AXForce 100",
       slug: "li-ning-aXForce-100",
@@ -176,7 +176,7 @@ const products = {
       desc: "The Axforce 100 is built to maximise the impact of your attacks and gives complete & direct power transmission in every shot. The quality of heavy hits is very good, and there is minimal loss of tail speed",
       padding: true
     },
-    ]
+  ]
 };
 
 export default products;
