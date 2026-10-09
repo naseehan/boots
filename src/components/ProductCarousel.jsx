@@ -1,16 +1,30 @@
+import { useState, useEffect } from "react";
 import { Carousel } from "@mantine/carousel";
 import "@mantine/carousel/styles.css";
 import styles from "./productCarousel.module.css";
-import products from "./products";
+import { fetchProducts } from "../api/productsApi";
+import staticProducts from "./products";
 import { useNavigate } from "react-router-dom";
 
 function ProductCarousel() {
   const navigate = useNavigate();
+  const [shoes, setShoes] = useState(staticProducts.shoes);
+
+  useEffect(() => {
+    fetchProducts({ group: "shoes" })
+      .then((data) => {
+        const list = Array.isArray(data) && data.length > 0 ? data : staticProducts.shoes;
+        setShoes(list);
+      })
+      .catch(() => setShoes(staticProducts.shoes));
+  }, []);
 
   const handleClick = (slug) => {
     window.scrollTo(0, 0);
     navigate(`/products/${slug}`);
   };
+
+  if (shoes.length === 0) return null;
 
   return (
     <section className="common-container related-products-section" aria-label="Related Products">
@@ -33,8 +47,8 @@ function ProductCarousel() {
           control: styles.control,
         }}
       >
-        {products.shoes.map((product) => (
-          <Carousel.Slide key={product.id}>
+        {shoes.map((product) => (
+          <Carousel.Slide key={product._id || product.id}>
             <article className={styles.productCard}>
               <div
                 className={styles.imageWrapper}
@@ -51,7 +65,7 @@ function ProductCarousel() {
               >
                 <img
                   loading="lazy"
-                  src={product.image}
+                  src={product.imageUrl || product.image}
                   alt={product.name}
                   className={styles.productImage}
                   width="260"

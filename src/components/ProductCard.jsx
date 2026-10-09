@@ -1,7 +1,8 @@
 import { useMemo, useState, useEffect } from "react";
-import products from "./products";
 import "../stylePages/productCard/App.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import { fetchProducts } from "../api/productsApi";
+import staticProducts from "./products";
 
 const categoriesList = [
   { id: "", label: "All Products" },
@@ -18,6 +19,54 @@ function ProductCard() {
   const [sortValue, setSortValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 8;
+
+  // API state
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    setLoading(true);
+    setError("");
+    fetchProducts()
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setAllProducts(data);
+        } else {
+          const fallback = Object.entries(staticProducts).flatMap(([group, items]) =>
+            items.map((it) => ({
+              _id: String(it.id),
+              name: it.name,
+              slug: it.slug,
+              price: it.price,
+              category: it.category,
+              productGroup: group,
+              overview: it.desc,
+              imageUrl: it.image,
+              padding: it.padding,
+            }))
+          );
+          setAllProducts(fallback);
+        }
+      })
+      .catch(() => {
+        const fallback = Object.entries(staticProducts).flatMap(([group, items]) =>
+          items.map((it) => ({
+            _id: String(it.id),
+            name: it.name,
+            slug: it.slug,
+            price: it.price,
+            category: it.category,
+            productGroup: group,
+            overview: it.desc,
+            imageUrl: it.image,
+            padding: it.padding,
+          }))
+        );
+        setAllProducts(fallback);
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
   useEffect(() => {
     if (location.state?.category !== undefined) {
@@ -40,12 +89,11 @@ function ProductCard() {
     setCurrentPage(1);
   };
 
+  // Filter flat array by productGroup (replaces the old products[category] lookup)
   const selectedProducts = useMemo(() => {
-    if (category && products[category]) {
-      return products[category];
-    }
-    return Object.values(products).flat();
-  }, [category]);
+    if (!category) return allProducts;
+    return allProducts.filter((p) => p.productGroup === category || p.category === category);
+  }, [allProducts, category]);
 
   const sortedItems = useMemo(() => {
     const items = [...selectedProducts];
@@ -70,6 +118,66 @@ function ProductCard() {
   const handleNext = () => {
     if (currentPage < totalPage) setCurrentPage((prev) => prev + 1);
   };
+
+  // ── Loading skeleton ─────────────────────────────────────
+  if (loading) {
+    return (
+      <section className="catalog-container common-container" aria-label="Product Catalog">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "320px",
+            gap: "1rem",
+            color: "var(--text-muted)",
+          }}
+          role="status"
+          aria-live="polite"
+        >
+          <div className="spinner-athletic" />
+          <p>Loading products…</p>
+        </div>
+      </section>
+    );
+  }
+
+  // ── Error state ──────────────────────────────────────────
+  if (error) {
+    return (
+      <section className="catalog-container common-container" aria-label="Product Catalog">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "320px",
+            gap: "1rem",
+            color: "var(--text-muted)",
+            textAlign: "center",
+          }}
+          role="alert"
+        >
+          <p style={{ color: "var(--brand-red)" }}>⚠️ {error}</p>
+          <button
+            className="btn-catalog-details"
+            onClick={() => {
+              setLoading(true);
+              setError("");
+              fetchProducts()
+                .then((data) => setAllProducts(Array.isArray(data) ? data : []))
+                .catch((err) => setError(err.message || "Failed to load products."))
+                .finally(() => setLoading(false));
+            }}
+          >
+            Retry
+          </button>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="catalog-container common-container" aria-label="Product Catalog">
@@ -108,10 +216,23 @@ function ProductCard() {
         </div>
       </div>
 
+      {/* Empty state */}
+      {currentItems.length === 0 && (
+        <div
+          style={{
+            textAlign: "center",
+            padding: "3rem 1rem",
+            color: "var(--text-muted)",
+          }}
+        >
+          <p>No products found in this category.</p>
+        </div>
+      )}
+
       {/* Product Cards Grid */}
       <div className="catalog-grid">
         {currentItems.map((item) => (
-          <article className="catalog-card" key={item.id}>
+          <article className="catalog-card" key={item._id}>
             <div
               className="catalog-card-media"
               onClick={() => handleClick(item.slug)}
@@ -127,7 +248,7 @@ function ProductCard() {
             >
               <span className="catalog-badge">{item.category}</span>
               <img
-                src={item.image}
+                src={item.imageUrl}
                 alt={item.name}
                 loading="lazy"
                 width="280"
@@ -148,7 +269,7 @@ function ProductCard() {
                 <span className="catalog-card-price">₹{item.price.toLocaleString("en-IN")}</span>
               </div>
 
-              <p className="catalog-card-desc">{item.desc}</p>
+              <p className="catalog-card-desc">{item.overview}</p>
 
               <button
                 className="btn-catalog-details"
@@ -203,4 +324,3 @@ function ProductCard() {
 }
 
 export default ProductCard;
-

@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../stylePages/bestSeller/App.css";
-import products from "./products";
+import { fetchProducts } from "../api/productsApi";
+import staticProducts from "./products";
 
 const BestSeller = () => {
   const navigate = useNavigate();
@@ -12,8 +13,20 @@ const BestSeller = () => {
   const currentTranslate = useRef(0);
   const didDrag = useRef(false);
 
-  // 12 cards per group (6 unique shoes doubled) guarantees continuous track width on all viewports
-  const cardList = [...products.shoes, ...products.shoes];
+  const [shoes, setShoes] = useState(staticProducts.shoes);
+
+  useEffect(() => {
+    fetchProducts({ group: "shoes" })
+      .then((data) => {
+        const list = Array.isArray(data) && data.length > 0 ? data : staticProducts.shoes;
+        setShoes(list);
+      })
+      .catch(() => setShoes(staticProducts.shoes));
+  }, []);
+
+  // Duplicate cards for continuous track width on all viewports
+  const cardList = shoes.length > 0 ? [...shoes, ...shoes] : [];
+
 
   const getTranslateX = (el) => {
     if (!el) return 0;
@@ -110,7 +123,7 @@ const BestSeller = () => {
           <div ref={groupRef} className="bestseller-group">
             {cardList.map((item, index) => (
               <article
-                key={`best-g1-${item.id}-${index}`}
+                key={`best-g1-${item._id || item.id}-${index}`}
                 className="bestseller-slide-card"
                 onClick={() => handleCardClick(item.slug)}
                 role="button"
@@ -125,7 +138,7 @@ const BestSeller = () => {
               >
                 <div className="bestseller-slide-img-box">
                   <img
-                    src={item.image}
+                    src={item.imageUrl || item.image}
                     loading="eager"
                     decoding="async"
                     alt={item.name}
@@ -150,7 +163,7 @@ const BestSeller = () => {
           <div className="bestseller-group" aria-hidden="true">
             {cardList.map((item, index) => (
               <article
-                key={`best-g2-${item.id}-${index}`}
+                key={`best-g2-${item._id || item.id}-${index}`}
                 className="bestseller-slide-card"
                 onClick={() => handleCardClick(item.slug)}
                 role="button"
@@ -158,7 +171,7 @@ const BestSeller = () => {
               >
                 <div className="bestseller-slide-img-box">
                   <img
-                    src={item.image}
+                    src={item.imageUrl || item.image}
                     loading="eager"
                     decoding="async"
                     alt=""
