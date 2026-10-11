@@ -1,4 +1,15 @@
-const BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/+$/, '');
+const getBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL.replace(/\/+$/, '');
+  }
+  // Only default to localhost:5000 during local development
+  if (import.meta.env.DEV) {
+    return 'http://localhost:5000';
+  }
+  return '';
+};
+
+const BASE_URL = getBaseUrl();
 
 /** Helper: throw a descriptive error from a JSON { error } response body */
 async function handleResponse(res) {

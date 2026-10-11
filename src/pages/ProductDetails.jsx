@@ -224,7 +224,7 @@ const ProductDetails = () => {
       </div>
 
       {/* Related Carousel */}
-      <Carousel />
+      <Carousel currentProduct={product} />
     </div>
   );
 };

@@ -139,7 +139,7 @@ const BestSeller = () => {
                 <div className="bestseller-slide-img-box">
                   <img
                     src={item.imageUrl || item.image}
-                    loading="eager"
+                    loading={index < 2 ? "eager" : "lazy"}
                     decoding="async"
                     alt={item.name}
                     width="360"
@@ -172,7 +172,7 @@ const BestSeller = () => {
                 <div className="bestseller-slide-img-box">
                   <img
                     src={item.imageUrl || item.image}
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                     alt=""
                     width="360"

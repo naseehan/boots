@@ -1,5 +1,5 @@
-import homeImg from "../assets/home-img1.webp";
-import homeBg from "../assets/heroBg1.webp";
+import homeImg from "../assets/home-img.webp";
+import homeBg from "../assets/heroBg.webp";
 import "../stylePages/Home/App.css";
 import Categories from "../components/Categories";
 import MostPopular from "../components/MostPopular";

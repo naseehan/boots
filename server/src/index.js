@@ -79,10 +79,13 @@ const apiLimiter = rateLimit({
   message: { error: 'Too many requests, please try again later.' },
 });
 
+// ─── HEALTH CHECKS (Bypass rate limits for uptime monitors) ───────────────────
+app.use('/health', healthRoutes);
+app.use('/api/health', healthRoutes);
+
 app.use('/api', apiLimiter);
 
 // ─── ROUTES ───────────────────────────────────────────────────────────────────
-app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/admin/products', adminProductRoutes);

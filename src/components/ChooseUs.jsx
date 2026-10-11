@@ -1,4 +1,4 @@
-import main1 from "../assets/main.webp";
+import main1 from "../assets/main1.webp";
 import main2 from "../assets/main2.webp";
 import "../stylePages/chooseUs/App.css";
 import { Link } from "react-router-dom";
