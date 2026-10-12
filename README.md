@@ -1,13 +1,15 @@
-# Signature Sports — E-Commerce Storefront & Admin Dashboard
+# Signature Sports — Product catalog & Admin Dashboard
 
 Signature Sports is a premier sports equipment storefront in Kallambalam, Kerala. This repository contains the complete full-stack application: a React + Vite customer-facing storefront, a Node.js + Express REST API backend, MongoDB Atlas database integration, Amazon S3 private image storage, and a protected Admin Dashboard for managing products.
 
 ---
 
+Live site: https://www.signaturesports.shop/  
+
 ## Architecture Overview
 
 ```
-d:\Projects\boots\
+https://github.com/naseehan/boots
 ├── server/                              # Node.js + Express Backend
 │   ├── src/
 │   │   ├── index.js                     # Express app setup, CORS, session, error handler
@@ -111,14 +113,14 @@ FRONTEND_URL=http://localhost:5173
 ### Production Hosting Configuration
 - In production (e.g. Render, Railway, Heroku, AWS ECS):
   - Set `NODE_ENV=production`.
-  - Set `FRONTEND_URL` to your production frontend domain (e.g. `https://signature-sports.vercel.app`).
+  - Set `FRONTEND_URL` to your production frontend domain (e.g. `https://www.signaturesports.shop/`).
   - Session cookies automatically switch to `secure: true` (HTTPS only) and `httpOnly: true`.
 - On your frontend hosting (e.g. Vercel):
   - Set `VITE_API_URL` to your production backend URL (e.g. `https://api.signaturesports.com`).
 
 > **Security Note:** `.env` and `server/.env` are strictly excluded in `.gitignore` to prevent secret exposure.
 
----
+--- 
 
 ## 3. Creating the First Admin Account
 
@@ -238,12 +240,12 @@ curl http://localhost:5000/api/health
 
 ### Backend (Render / Railway / AWS ECS)
 1. Add environment variables in your hosting provider's dashboard matching `server/.env.example`.
-2. Ensure `NODE_ENV=production` and `FRONTEND_URL=https://your-storefront.vercel.app`.
+2. Ensure `NODE_ENV=production` and `FRONTEND_URL=https://www.signaturesports.shop/`.
 3. Set your build command: `npm install` and start command: `npm start`.
 
 ### Frontend (Vercel)
 1. In the Vercel project settings, add the environment variable:
-   - `VITE_API_URL`: Your backend URL (e.g. `https://signature-sports-api.onrender.com`).
+   - `VITE_API_URL`: `https://signature-sports-api.onrender.com`
 2. Build command: `npm run build`, Output directory: `dist`.
 
 ### MongoDB Atlas Checklist
@@ -253,4 +255,5 @@ curl http://localhost:5000/api/health
 ---
 
 ## License & Attribution
-Signature Sports © All rights reserved.
+Author
+Naseeh An · https://www.naseeh.in/ · www.linkedin.com/in/naseeh-an2
