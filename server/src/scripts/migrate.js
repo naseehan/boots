@@ -23,6 +23,10 @@ const sourceData = {
     { id: 6, name: 'Puma 22 FH', slug: 'puma-22-fh', image: '/puma-cricket1.webp', rating: 4.6, category: 'running', price: 4549.0, desc: 'Experience unrivaled performance and style with Puma 22 FH Rubber VK Cricket Shoes' },
     { id: 7, name: 'Nivia Encounter', slug: 'nivia-encounter', image: '/nivia-encounter1.png', rating: 4.4, category: 'football', price: 749, desc: 'Premolded heel counter for protection and secure heel fit, Die-cut light weight Polyester cloth EVA insole Football boots' },
     { id: 8, name: 'Nivia Sterling', slug: 'nivia-sterling', image: '/nivia1.png', rating: 4.7, category: 'football', price: 2810, desc: 'Stability running shoes designed for controlled motion and reliable comfort.' },
+    { id: 17, name: 'Anza Saka', slug: 'anza-saka', image: '/products/anza-saka.webp', category: 'football', price: 1450, desc: 'Semi-ankle football boots with a lightweight PU upper, durable outsole and molded studs for super grip on outdoor grounds.' },
+    { id: 18, name: 'Anza Krypton', slug: 'anza-krypton', image: '/products/anza-krypton.webp', category: 'football', price: 1580, desc: 'Low-ankle lace-up football boots with a synthetic leather upper and conical studs, built for outdoor training and matches.' },
+    { id: 19, name: 'Anza Flyzero', slug: 'anza-flyzero', image: '/products/anza-flyzero.webp', category: 'football', price: 3000, desc: 'Lightweight half-ankle football boots with a breathable knit upper and a superior-grip stud pattern for explosive speed.' },
+    { id: 20, name: 'Anza Fury', slug: 'anza-fury', image: '/products/anza-fury.webp', category: 'football', price: 1800, desc: 'Durable outdoor football boots designed for enhanced ball control and maximum performance.' },
   ],
   sportsBalls: [
     { id: 9, name: 'Nivia Football', slug: 'nivia-football', image: '/balls/nivia-football1.png', rating: 4.7, category: 'football', price: 999, desc: 'Suitable For: All Conditions | Ideal For: Training/Match', padding: true },
@@ -37,6 +41,15 @@ const sourceData = {
   racquets: [
     { id: 15, name: 'Yonex Astrox Attack 9', slug: 'yonex-astrox-attack-9', image: '/racquets/yonex.png', rating: 4.3, category: 'racquets', price: 1398, desc: 'Joint: Built-in T Joint , Head Shape: Isometric , Material: Graphite , Cover: Full Cover', padding: true },
     { id: 16, name: 'Li-Ning AXForce 100', slug: 'li-ning-aXForce-100', image: '/racquets/linung.png', rating: 4.1, category: 'racquets', price: 6000, desc: 'The Axforce 100 is built to maximise the impact of your attacks and gives complete & direct power transmission in every shot. The quality of heavy hits is very good, and there is minimal loss of tail speed', padding: true },
+    { id: 21, name: 'Yonex Astrox 100 ZZ', slug: 'yonex-astrox-100-zz', image: '/products/yonex-astrox-100zz.webp', category: 'racquets', price: 18100, desc: "Yonex's flagship head-heavy attacking racquet, made in Japan and used by Viktor Axelsen. Built for steep, powerful smashes." },
+    { id: 22, name: 'Victor Thruster F Ultra', slug: 'victor-thruster-f-ultra', image: '/products/victor-thruster-f-ultra.webp', category: 'racquets', price: 12490, desc: 'Top-of-the-range Thruster series attacking racquet. Weight: 4U , Flex: Stiff , Built for heavy smashes and aggressive play' },
+    { id: 23, name: 'Victor Thruster Ryuga II Pro', slug: 'victor-thruster-ryuga-ii-pro', image: '/products/victor-thruster-ryuga-ii-pro.webp', category: 'racquets', price: 11120, desc: 'Pro-grade Thruster series racquet that combines heavy-hitting power with quick handling for attacking players.' },
+    { id: 24, name: 'Victor Auraspeed LJH', slug: 'victor-auraspeed-ljh', image: '/products/victor-auraspeed-ljh.webp', category: 'racquets', price: 10320, desc: 'Li Junhui signature Auraspeed racquet. Weight: 4U , Grip: G5 , Speed-focused frame for fast doubles rallies' },
+    { id: 25, name: 'Victor Auraspeed 2800', slug: 'victor-auraspeed-2800', image: '/products/victor-auraspeed-2800.webp', category: 'racquets', price: 4500, desc: 'Pre-strung speed racquet. Weight: 4U (80-84 g) , Grip: G5 , Flex: Stiff , Max tension: 30 lbs' },
+    { id: 26, name: 'Victor Jetspeed S 800HT', slug: 'victor-jetspeed-s-800ht', image: '/products/victor-jetspeed-s-800ht.webp', category: 'racquets', price: 2728, desc: 'Pre-strung Jetspeed racquet. Weight: 4U , Grip: G5 , Light and quick to swing, great value for club players' },
+  ],
+  other: [
+    { id: 27, name: 'Black Baton Track Pants', slug: 'black-baton-track-pants', image: '/products/black-baton-track-pants.webp', category: 'apparel', price: 499, desc: 'Budget track pants with breathable, lightweight fabric and an adjustable drawstring waist. Available in black and navy, for sports and casual wear.' },
   ],
 };
 
