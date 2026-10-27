@@ -7,11 +7,19 @@ import "../stylePages/contactButton/App.css";
 import Icon from "../components/Icon";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import usePageMeta from "../usePageMeta";
+import { productMeta, NOT_FOUND } from "../seo";
+import { usePrerenderData } from "../prerenderData";
+
+const PRODUCT_NOT_FOUND = { ...NOT_FOUND, title: "Product Not Found | Signature Sports" };
 
 const ProductDetails = () => {
   const { slug } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // Prerendered product pages start with the product the HTML was built from
+  const prerendered = usePrerenderData().product;
+  const initialProduct = prerendered?.slug === slug ? prerendered : null;
+  const [product, setProduct] = useState(initialProduct);
+  const [loading, setLoading] = useState(!initialProduct);
   const [selectedSize, setSelectedSize] = useState("");
 
   // Helper to cleanly sanitize sizes list from any residual brackets/quotes
@@ -28,7 +36,8 @@ const ProductDetails = () => {
     : [];
 
   useEffect(() => {
-    setLoading(true);
+    // Refresh in the background when the page already shows this product
+    if (!initialProduct) setLoading(true);
     fetchProductBySlug(slug)
       .then((data) => {
         if (data) {
@@ -55,6 +64,8 @@ const ProductDetails = () => {
       setSelectedSize("");
     }
   }, [availableSizes.length, product?.slug]);
+
+  usePageMeta(product ? productMeta(product) : loading ? null : PRODUCT_NOT_FOUND);
 
   if (loading) {
     return (

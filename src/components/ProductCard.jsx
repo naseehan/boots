@@ -1,8 +1,9 @@
 import { useMemo, useState, useEffect } from "react";
 import "../stylePages/productCard/App.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { fetchProducts } from "../api/productsApi";
 import staticProducts from "./products";
+import { usePrerenderData } from "../prerenderData";
 
 const categoriesList = [
   { id: "", label: "All Products" },
@@ -20,13 +21,14 @@ function ProductCard() {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 8;
 
-  // API state
-  const [allProducts, setAllProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // API state (the prerendered catalog page starts with the products it was built with)
+  const prerendered = usePrerenderData().products;
+  const [allProducts, setAllProducts] = useState(prerendered || []);
+  const [loading, setLoading] = useState(!prerendered);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    setLoading(true);
+    if (!prerendered) setLoading(true);
     setError("");
     fetchProducts()
       .then((data) => {
@@ -259,12 +261,10 @@ function ProductCard() {
 
             <div className="catalog-card-content">
               <div className="catalog-card-header">
-                <h2
-                  className="catalog-card-title"
-                  onClick={() => handleClick(item.slug)}
-                  title={item.name}
-                >
-                  {item.name}
+                <h2 className="catalog-card-title" title={item.name}>
+                  <Link to={`/products/${item.slug}`} className="link-inherit">
+                    {item.name}
+                  </Link>
                 </h2>
                 <span className="catalog-card-price">₹{item.price.toLocaleString("en-IN")}</span>
               </div>

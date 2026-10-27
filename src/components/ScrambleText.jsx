@@ -85,7 +85,8 @@ const ScrambleText = () => {
     }
   }, [counter]);
 
-  return <div ref={elRef}></div>;
+  // A block span, not a div: it sits inside a <p>, where a div is invalid HTML and breaks prerendering
+  return <span ref={elRef} style={{ display: "block" }}></span>;
 };
 
 export default ScrambleText;

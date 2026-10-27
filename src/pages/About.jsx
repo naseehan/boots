@@ -1,6 +1,8 @@
 import ScrambleText from "../components/ScrambleText";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import usePageMeta from "../usePageMeta";
+import { pageMeta } from "../seo";
 
 const AboutWrapper = styled.section`
   max-width: 1280px;
@@ -123,6 +125,8 @@ const AboutWrapper = styled.section`
 `;
 
 const About = () => {
+  usePageMeta(pageMeta("/about"));
+
   return (
     <AboutWrapper aria-label="About Signature Sports">
       {/* Dynamic Animated Header */}
@@ -139,7 +143,7 @@ const About = () => {
 
       {/* Main Story Card */}
       <div className="about-story-section">
-        <h2 className="h1-heading mb-4">Who We Are</h2>
+        <h1 className="h1-heading mb-4">Who We Are</h1>
         <div className="about-story-card">
           <div className="about-text-content">
             <p>

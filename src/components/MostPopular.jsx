@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "../stylePages/mostPopular/App.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchProducts } from "../api/productsApi";
 import staticProducts from "./products";
 
@@ -78,8 +78,10 @@ const MostPopular = () => {
               />
             </div>
             <div className="popular-card-body">
-              <h3 className="popular-card-title" onClick={() => handleClick(product.slug)}>
-                {product.name}
+              <h3 className="popular-card-title">
+                <Link to={`/products/${product.slug}`} className="link-inherit">
+                  {product.name}
+                </Link>
               </h3>
               <div className="popular-rating" aria-label={`Rated ${product.rating || 4.5} out of 5 stars`}>
                 <div className="stars-icons">

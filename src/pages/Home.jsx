@@ -9,8 +9,12 @@ import BestSeller from "../components/BestSeller";
 import ChooseUs from "../components/ChooseUs";
 import InfiniteCarousel from "../components/InfiniteCarousel";
 import { Link } from "react-router-dom";
+import usePageMeta from "../usePageMeta";
+import { pageMeta } from "../seo";
 
 const Home = () => {
+  usePageMeta(pageMeta("/"));
+
   return (
     <>
       <section className="hero-section" aria-label="Welcome to Signature Sports">

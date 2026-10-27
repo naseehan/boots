@@ -1,6 +1,10 @@
 import ProductCard from "../components/ProductCard";
+import usePageMeta from "../usePageMeta";
+import { pageMeta } from "../seo";
 
 const Products = () => {
+  usePageMeta(pageMeta("/products"));
+
   return (
     <div className="products-page-container">
       <div className="common-container text-center py-4">

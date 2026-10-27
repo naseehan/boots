@@ -1,5 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
+import usePageMeta from "../usePageMeta";
+import { NOT_FOUND } from "../seo";
 
 const ErrorWrapper = styled.section`
   min-height: 65vh;
@@ -46,6 +48,7 @@ const ErrorWrapper = styled.section`
 `;
 
 const Error = () => {
+  usePageMeta(NOT_FOUND);
   const navigate = useNavigate();
 
   return (

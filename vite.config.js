@@ -5,7 +5,14 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // Bundle styled-components into the prerender build: Node otherwise loads its CommonJS build,
+  // whose default export doesn't come through as `styled`.
+  ssr: {
+    noExternal: ['styled-components'],
+  },
   build: {
+    // scripts/prerender.js reads it to link each page's CSS and JS chunk from its HTML
+    manifest: true,
     rollupOptions: {
       output: {
         manualChunks(id) {

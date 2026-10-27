@@ -116,6 +116,12 @@ a {
   transition: color var(--transition-fast);
 }
 
+/* A link that looks like its parent text (e.g. crawlable product names in card titles) */
+.link-inherit,
+.link-inherit:hover {
+  color: inherit;
+}
+
 img {
   max-width: 100%;
   height: auto;

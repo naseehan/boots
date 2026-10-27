@@ -35,4 +35,9 @@ export default [
       ],
     },
   },
+  // Build scripts run in Node
+  {
+    files: ['scripts/**/*.js'],
+    languageOptions: { globals: globals.node },
+  },
 ]

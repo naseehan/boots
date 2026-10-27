@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import usePageMeta from "../usePageMeta";
+import { pageMeta } from "../seo";
 import Icon from "../components/Icon";
 import { faPhone, faEnvelope, faLocationDot, faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
@@ -163,6 +165,8 @@ const ContactSection = styled.section`
 `;
 
 const Contact = () => {
+  usePageMeta(pageMeta("/contact"));
+
   return (
     <ContactSection aria-labelledby="contact-heading">
       <div className="contact-header">

@@ -9,7 +9,7 @@ import "@mantine/carousel/styles.css";
 import styles from "./productCarousel.module.css";
 import { fetchProducts } from "../api/productsApi";
 import staticProducts from "./products";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function ProductCarousel({ currentProduct }) {
   const navigate = useNavigate();
@@ -154,11 +154,10 @@ function ProductCarousel({ currentProduct }) {
 
               <div className={styles.productDetails}>
                 <span className={styles.productCategory}>{product.category}</span>
-                <h3
-                  className={styles.productName}
-                  onClick={() => handleClick(product.slug)}
-                >
-                  {product.name}
+                <h3 className={styles.productName}>
+                  <Link to={`/products/${product.slug}`} className="link-inherit">
+                    {product.name}
+                  </Link>
                 </h3>
                 <div className={styles.productPrice}>₹{product.price.toLocaleString("en-IN")}</div>
 
