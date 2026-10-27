@@ -1,0 +1,25 @@
+/*
+ * Self-hosted fonts, served from our own domain instead of Google Fonts (the extra connection
+ * to Google delayed the first paint on mobile). Only the latin and latin-ext subsets: latin-ext
+ * covers the rupee sign, and the site has no Cyrillic, Greek, Thai or Vietnamese text.
+ */
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-ext-400.css';
+@import '@fontsource/inter/latin-500.css';
+@import '@fontsource/inter/latin-ext-500.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/inter/latin-ext-600.css';
+@import '@fontsource/inter/latin-700.css';
+@import '@fontsource/inter/latin-ext-700.css';
+
+@import '@fontsource/kanit/latin-600.css';
+@import '@fontsource/kanit/latin-ext-600.css';
+@import '@fontsource/kanit/latin-700.css';
+@import '@fontsource/kanit/latin-ext-700.css';
+@import '@fontsource/kanit/latin-800.css';
+@import '@fontsource/kanit/latin-ext-800.css';
+
+@import '@fontsource/oswald/latin-600.css';
+@import '@fontsource/oswald/latin-ext-600.css';
+@import '@fontsource/oswald/latin-700.css';
+@import '@fontsource/oswald/latin-ext-700.css';

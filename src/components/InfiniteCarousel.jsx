@@ -1,15 +1,15 @@
 import '../stylePages/carousel/App.css';
 
 const brands = [
-  { name: "Nike", src: "/companyLogo/nike-logo.png" },
-  { name: "Adidas", src: "/companyLogo/adidas-logo.png" },
-  { name: "Puma", src: "/companyLogo/puma-logo.png" },
+  { name: "Nike", src: "/companyLogo/nike-logo.webp" },
+  { name: "Adidas", src: "/companyLogo/adidas-logo.webp" },
+  { name: "Puma", src: "/companyLogo/puma-logo.webp" },
   { name: "Nivia", src: "/companyLogo/nivia-logo.svg" },
-  { name: "Under Armour", src: "/companyLogo/ua-logo.png" },
+  { name: "Under Armour", src: "/companyLogo/ua-logo.webp" },
   { name: "Asics", src: "/companyLogo/asics-logo.png" },
   { name: "Reebok", src: "/companyLogo/reebok-logo.png" },
-  { name: "Cosco", src: "/companyLogo/cosco-logo.png" },
-  { name: "Tyka", src: "/companyLogo/tyka-logo.png" },
+  { name: "Cosco", src: "/companyLogo/cosco-logo.webp" },
+  { name: "Tyka", src: "/companyLogo/tyka-logo.webp" },
   { name: "Anza", src: "/companyLogo/anza-logo.webp" },
 ];
 

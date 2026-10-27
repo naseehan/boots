@@ -4,6 +4,9 @@ import { fetchProductBySlug } from "../api/productsApi";
 import staticProducts from "../components/products";
 import Carousel from "../components/ProductCarousel";
 import "../stylePages/contactButton/App.css";
+import Icon from "../components/Icon";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const ProductDetails = () => {
   const { slug } = useParams();
@@ -206,7 +209,7 @@ const ProductDetails = () => {
                 onClick={handleWhatsAppClick}
                 aria-label={`Inquire about ${product.name} on WhatsApp`}
               >
-                <i className="fa-brands fa-whatsapp fa-xl" aria-hidden="true"></i>
+                <Icon icon={faWhatsapp} className="icon-xl" />
                 <span>Order / Inquire via WhatsApp</span>
               </button>
 
@@ -215,7 +218,7 @@ const ProductDetails = () => {
                 className="btn-call-order"
                 aria-label="Call Signature Sports directly"
               >
-                <i className="fa-solid fa-phone" aria-hidden="true"></i>
+                <Icon icon={faPhone} />
                 <span>Call Store</span>
               </a>
             </div>

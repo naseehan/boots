@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import Icon from "../components/Icon";
+import { faPhone, faEnvelope, faLocationDot, faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const ContactSection = styled.section`
   max-width: 1280px;
@@ -176,7 +179,7 @@ const Contact = () => {
         {/* WhatsApp */}
         <article className="contact-card">
           <div className="contact-icon-wrapper" aria-hidden="true">
-            <i className="fa-brands fa-whatsapp"></i>
+            <Icon icon={faWhatsapp} />
           </div>
           <h2 className="contact-card-title">Chat on WhatsApp</h2>
           <p className="contact-card-info">+91 7034546546</p>
@@ -188,7 +191,7 @@ const Contact = () => {
             className="btn-contact-action btn-whatsapp-theme"
             aria-label="Start WhatsApp conversation with Signature Sports"
           >
-            <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            <Icon icon={faWhatsapp} />
             <span>Chat With Us</span>
           </a>
         </article>
@@ -196,7 +199,7 @@ const Contact = () => {
         {/* Phone */}
         <article className="contact-card">
           <div className="contact-icon-wrapper" aria-hidden="true">
-            <i className="fa-solid fa-phone"></i>
+            <Icon icon={faPhone} />
           </div>
           <h2 className="contact-card-title">Call Us Directly</h2>
           <p className="contact-card-info">+91 7034546546</p>
@@ -206,7 +209,7 @@ const Contact = () => {
             className="btn-contact-action btn-navy-theme"
             aria-label="Call +91 7034546546"
           >
-            <i className="fa-solid fa-phone" aria-hidden="true"></i>
+            <Icon icon={faPhone} />
             <span>Call Store</span>
           </a>
         </article>
@@ -214,7 +217,7 @@ const Contact = () => {
         {/* Email */}
         <article className="contact-card">
           <div className="contact-icon-wrapper" aria-hidden="true">
-            <i className="fa-solid fa-envelope"></i>
+            <Icon icon={faEnvelope} />
           </div>
           <h2 className="contact-card-title">Email Inquiries</h2>
           <p className="contact-card-info">info@signaturesports.com</p>
@@ -224,7 +227,7 @@ const Contact = () => {
             className="btn-contact-action btn-navy-theme"
             aria-label="Send email to info@signaturesports.com"
           >
-            <i className="fa-solid fa-envelope" aria-hidden="true"></i>
+            <Icon icon={faEnvelope} />
             <span>Send Email</span>
           </a>
         </article>
@@ -232,7 +235,7 @@ const Contact = () => {
         {/* Location */}
         <article className="contact-card">
           <div className="contact-icon-wrapper" aria-hidden="true">
-            <i className="fa-solid fa-location-dot"></i>
+            <Icon icon={faLocationDot} />
           </div>
           <h2 className="contact-card-title">Store Location</h2>
           <p className="contact-card-info">Kallambalam, Kerala</p>
@@ -244,7 +247,7 @@ const Contact = () => {
             className="btn-contact-action btn-navy-theme"
             aria-label="Open Google Maps for directions to Signature Sports"
           >
-            <i className="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+            <Icon icon={faMapLocationDot} />
             <span>Get Directions</span>
           </a>
         </article>

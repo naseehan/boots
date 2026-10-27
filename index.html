@@ -64,34 +64,10 @@
       }
     </script>
 
-    <!-- Google Fonts: Inter (UI/Body) & Kanit + Oswald (Sports Headings) — non-blocking -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload the font CSS so the browser discovers it early without blocking render -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kanit:wght@600;700;800&family=Oswald:wght@600;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kanit:wght@600;700;800&family=Oswald:wght@600;700&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
-
-    <!-- Bootstrap 5 CSS is now bundled locally via npm (no CDN round-trip) -->
+    <!-- Fonts (Inter, Kanit, Oswald) and Bootstrap are bundled locally via npm, see src/fonts.css (no CDN round-trip) -->
   </head>
   <body>
     <div id="root"></div>
-
-    <!-- FontAwesome -->
-    <script
-      src="https://kit.fontawesome.com/5141f92ced.js"
-      crossorigin="anonymous"
-      defer
-    ></script>
 
     <script type="module" src="/src/main.jsx"></script>
   </body>

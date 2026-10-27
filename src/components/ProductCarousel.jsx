@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
+import { MantineProvider } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
+// Only the Mantine styles the carousel needs. Its baseline.css (body reset) is left out so it can't restyle the page.
+import "@mantine/core/styles/default-css-variables.css";
+import "@mantine/core/styles/global.css";
+import "@mantine/core/styles/UnstyledButton.css";
 import "@mantine/carousel/styles.css";
 import styles from "./productCarousel.module.css";
 import { fetchProducts } from "../api/productsApi";
@@ -173,5 +178,12 @@ function ProductCarousel({ currentProduct }) {
   );
 }
 
-export default ProductCarousel;
+// Mantine is only used here, so its provider wraps this component instead of the whole app.
+const ProductCarouselWithProvider = (props) => (
+  <MantineProvider>
+    <ProductCarousel {...props} />
+  </MantineProvider>
+);
+
+export default ProductCarouselWithProvider;
 

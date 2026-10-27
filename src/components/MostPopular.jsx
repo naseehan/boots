@@ -66,11 +66,11 @@ const MostPopular = () => {
       </div>
       <div className="popular-grid mts">
         {products.map((product) => (
-          <article className="popular-card" key={product._id}>
+          <article className="popular-card" key={product._id || product.slug}>
             <div className="popular-card-media" onClick={() => handleClick(product.slug)}>
               <span className="popular-category-badge">{product.category}</span>
               <img
-                src={product.imageUrl}
+                src={product.imageUrl || product.image}
                 alt={product.name}
                 loading="lazy"
                 width="280"

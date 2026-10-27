@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light;
+
   /* Brand Color Palette */
   --brand-navy: #0b132b;
   --brand-navy-light: #1c2541;
@@ -64,6 +66,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* Inline SVG icons (sized like the old Font Awesome font icons) */
+.icon {
+  display: inline-block;
+  vertical-align: -0.125em;
+  overflow: visible;
+}
+
+.icon-xl {
+  font-size: 1.5em;
+  line-height: 0.04167em;
+  vertical-align: -0.125em;
 }
 
 /* Accessible focus ring */

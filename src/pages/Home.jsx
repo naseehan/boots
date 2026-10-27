@@ -1,5 +1,7 @@
 import homeImg from "../assets/home-img.webp";
+import homeImgSmall from "../assets/home-img-600.webp";
 import homeBg from "../assets/heroBg.webp";
+import homeBgSmall from "../assets/heroBg-800.webp";
 import "../stylePages/Home/App.css";
 import Categories from "../components/Categories";
 import MostPopular from "../components/MostPopular";
@@ -15,6 +17,8 @@ const Home = () => {
         <div className="hero-background-wrapper">
           <img
             src={homeBg}
+            srcSet={`${homeBgSmall} 800w, ${homeBg} 1521w`}
+            sizes="100vw"
             alt="Signature Sports background"
             className="hero-bg-img"
             width="1920"
@@ -28,6 +32,8 @@ const Home = () => {
           <div className="hero-visual">
             <img
               src={homeImg}
+              srcSet={`${homeImgSmall} 600w, ${homeImg} 760w`}
+              sizes="(max-width: 480px) 280px, (max-width: 991px) 380px, 520px"
               alt="Premium Sports Shoes and Equipment"
               className="hero-featured-img"
               width="600"

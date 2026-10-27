@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.webp";
+import Icon from "./Icon";
+import { faMapLocationDot, faPhone, faLocationDot, faClock } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -34,7 +37,7 @@ const Footer = () => {
                   aria-label="WhatsApp"
                   className="footer-social-icon"
                 >
-                  <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                  <Icon icon={faWhatsapp} />
                 </a>
                 <a
                   href="https://www.google.com/maps?q=8.763724781573522,76.79233498368549"
@@ -43,14 +46,14 @@ const Footer = () => {
                   aria-label="Google Maps"
                   className="footer-social-icon"
                 >
-                  <i className="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+                  <Icon icon={faMapLocationDot} />
                 </a>
                 <a
                   href="tel:+917034546546"
                   aria-label="Phone"
                   className="footer-social-icon"
                 >
-                  <i className="fa-solid fa-phone" aria-hidden="true"></i>
+                  <Icon icon={faPhone} />
                 </a>
               </div>
             </div>
@@ -106,21 +109,21 @@ const Footer = () => {
               <h3 className="footer-heading">Store Information</h3>
               <div className="footer-contact-items">
                 <div className="footer-contact-item">
-                  <i className="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  <Icon icon={faLocationDot} />
                   <span>Main Road, Kallambalam, Kerala 695605</span>
                 </div>
                 <div className="footer-contact-item">
-                  <i className="fa-solid fa-phone" aria-hidden="true"></i>
+                  <Icon icon={faPhone} />
                   <a href="tel:+917034546546">+91 7034546546</a>
                 </div>
                 <div className="footer-contact-item">
-                  <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                  <Icon icon={faWhatsapp} />
                   <a href="https://wa.me/917034546546" target="_blank" rel="noopener noreferrer">
                     +91 7034546546 (WhatsApp)
                   </a>
                 </div>
                 <div className="footer-contact-item">
-                  <i className="fa-solid fa-clock" aria-hidden="true"></i>
+                  <Icon icon={faClock} />
                   <span>Mon – Sun: 9:00 AM – 9:00 PM</span>
                 </div>
               </div>
